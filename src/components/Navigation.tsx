@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
@@ -36,6 +35,9 @@ const Navigation = () => {
           </Link>
           <Link to="/products?category=bestsellers" className="text-sm font-medium hover:text-brand-teal transition">
             Best Sellers
+          </Link>
+          <Link to="/contact" className="text-sm font-medium hover:text-brand-teal transition">
+            Contact
           </Link>
         </nav>
 
@@ -131,6 +133,13 @@ const Navigation = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               Best Sellers
+            </Link>
+            <Link 
+              to="/contact" 
+              className="text-sm font-medium py-2 hover:text-brand-teal transition"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
             </Link>
           </nav>
         </div>

@@ -1,6 +1,5 @@
-
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -119,6 +118,12 @@ const Footer = () => {
         <div className="border-t border-border mt-8 pt-8 text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} ThreadBoutique. All rights reserved.</p>
         </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-4 text-center">
+        <p className="text-sm text-muted-foreground">
+          Contact us: <a href="mailto:boozersclub.yahoo.com" className="hover:text-brand-teal transition">boozersclub.yahoo.com</a>
+        </p>
       </div>
     </footer>
   );
