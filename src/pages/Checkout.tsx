@@ -1,0 +1,429 @@
+
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { useCart } from "@/context/CartContext";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { ArrowLeft, CreditCard, Lock } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
+
+const Checkout = () => {
+  const { items, totalItems, totalPrice, clearCart } = useCart();
+  const navigate = useNavigate();
+  
+  // Form state
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    country: "US",
+    sameShipping: true,
+    saveInfo: true,
+    cardNumber: "",
+    cardName: "",
+    cardExpiry: "",
+    cardCVC: ""
+  });
+  
+  // Form state handling
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  
+  const handleCheckboxChange = (name: string, checked: boolean) => {
+    setFormData({ ...formData, [name]: checked });
+  };
+  
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData({ ...formData, [name]: value });
+  };
+  
+  // Shipping calculation (simplified for demo)
+  const shippingCost = totalPrice >= 50 ? 0 : 5.99;
+  const totalWithShipping = totalPrice + shippingCost;
+  
+  // Form submission
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Simulate order processing
+    setTimeout(() => {
+      // Clear cart
+      clearCart();
+      
+      // Show success toast
+      toast({
+        title: "Order placed successfully!",
+        description: "Check your email for order confirmation.",
+        duration: 5000,
+      });
+      
+      // Redirect to success page
+      navigate("/order-success");
+    }, 1500);
+  };
+  
+  // Check if cart is empty
+  useEffect(() => {
+    if (items.length === 0) {
+      navigate("/cart");
+    }
+  }, [items.length, navigate]);
+  
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navigation />
+      
+      <main className="flex-1 py-8">
+        <div className="container mx-auto px-4">
+          <h1 className="text-3xl font-playfair font-bold mb-8">Checkout</h1>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Checkout Form */}
+            <div className="lg:col-span-2">
+              <form onSubmit={handleSubmit}>
+                {/* Contact Information */}
+                <div className="bg-white rounded-lg border overflow-hidden mb-6">
+                  <div className="p-4 border-b bg-muted/30">
+                    <h2 className="font-medium">Contact Information</h2>
+                  </div>
+                  
+                  <div className="p-4 space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="firstName">First Name</Label>
+                        <Input
+                          id="firstName"
+                          name="firstName"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="lastName">Last Name</Label>
+                        <Input
+                          id="lastName"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">Phone (optional)</Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Shipping Address */}
+                <div className="bg-white rounded-lg border overflow-hidden mb-6">
+                  <div className="p-4 border-b bg-muted/30">
+                    <h2 className="font-medium">Shipping Address</h2>
+                  </div>
+                  
+                  <div className="p-4 space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="address">Street Address</Label>
+                      <Input
+                        id="address"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="city">City</Label>
+                        <Input
+                          id="city"
+                          name="city"
+                          value={formData.city}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="state">State/Province</Label>
+                        <Input
+                          id="state"
+                          name="state"
+                          value={formData.state}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="zipCode">Postal/Zip Code</Label>
+                        <Input
+                          id="zipCode"
+                          name="zipCode"
+                          value={formData.zipCode}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="country">Country</Label>
+                        <Select 
+                          value={formData.country} 
+                          onValueChange={(value) => handleSelectChange("country", value)}
+                        >
+                          <SelectTrigger id="country">
+                            <SelectValue placeholder="Select country" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="US">United States</SelectItem>
+                            <SelectItem value="CA">Canada</SelectItem>
+                            <SelectItem value="UK">United Kingdom</SelectItem>
+                            <SelectItem value="AU">Australia</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="sameShipping" 
+                          checked={formData.sameShipping}
+                          onCheckedChange={(checked) => 
+                            handleCheckboxChange("sameShipping", checked as boolean)
+                          }
+                        />
+                        <label
+                          htmlFor="sameShipping"
+                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                          Billing address same as shipping
+                        </label>
+                      </div>
+                      
+                      <div className="flex items-center space-x-2">
+                        <Checkbox 
+                          id="saveInfo" 
+                          checked={formData.saveInfo}
+                          onCheckedChange={(checked) => 
+                            handleCheckboxChange("saveInfo", checked as boolean)
+                          }
+                        />
+                        <label
+                          htmlFor="saveInfo"
+                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                          Save this information for next time
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Payment Information */}
+                <div className="bg-white rounded-lg border overflow-hidden mb-6">
+                  <div className="p-4 border-b bg-muted/30">
+                    <h2 className="font-medium">Payment Information</h2>
+                  </div>
+                  
+                  <div className="p-4 space-y-4">
+                    <div className="flex items-center mb-4">
+                      <div className="p-1 border rounded mr-2 bg-white">
+                        <CreditCard className="h-5 w-5 text-muted-foreground" />
+                      </div>
+                      <span className="font-medium">Credit Card</span>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="cardNumber">Card Number</Label>
+                      <Input
+                        id="cardNumber"
+                        name="cardNumber"
+                        placeholder="1234 5678 9012 3456"
+                        value={formData.cardNumber}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="cardName">Name on Card</Label>
+                      <Input
+                        id="cardName"
+                        name="cardName"
+                        placeholder="John Doe"
+                        value={formData.cardName}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="cardExpiry">Expiration Date</Label>
+                        <Input
+                          id="cardExpiry"
+                          name="cardExpiry"
+                          placeholder="MM/YY"
+                          value={formData.cardExpiry}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="cardCVC">CVC</Label>
+                        <Input
+                          id="cardCVC"
+                          name="cardCVC"
+                          placeholder="123"
+                          value={formData.cardCVC}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="text-xs flex items-center text-muted-foreground mt-2">
+                      <Lock className="h-3 w-3 mr-1" /> 
+                      Your payment information is secure and encrypted
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <Button 
+                    type="button"
+                    variant="outline" 
+                    className="flex items-center"
+                    onClick={() => navigate("/cart")}
+                  >
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Return to Cart
+                  </Button>
+                  
+                  <Button 
+                    type="submit"
+                    className="bg-brand-teal hover:bg-brand-teal/90"
+                  >
+                    Complete Order
+                  </Button>
+                </div>
+              </form>
+            </div>
+            
+            {/* Order Summary */}
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-lg border overflow-hidden sticky top-4">
+                <div className="p-4 border-b bg-muted/30">
+                  <h2 className="font-medium">Order Summary</h2>
+                </div>
+                
+                <div className="p-4">
+                  <div className="max-h-64 overflow-auto mb-4">
+                    {items.map((item) => (
+                      <div 
+                        key={`${item.product.id}-${item.size}-${item.color}`} 
+                        className="flex py-2 border-b"
+                      >
+                        <div className="w-16 h-16 rounded overflow-hidden">
+                          <img 
+                            src={item.product.image} 
+                            alt={item.product.name} 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="ml-4 flex-1">
+                          <div className="font-medium">{item.product.name}</div>
+                          <div className="text-xs text-muted-foreground">
+                            Size: {item.size.toUpperCase()} / Color: {item.color}
+                          </div>
+                          <div className="text-sm mt-1">
+                            ${item.product.price.toFixed(2)} × {item.quantity}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="space-y-2 py-2">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Subtotal</span>
+                      <span>${totalPrice.toFixed(2)}</span>
+                    </div>
+                    
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Shipping</span>
+                      {shippingCost === 0 ? (
+                        <span className="text-green-600">Free</span>
+                      ) : (
+                        <span>${shippingCost.toFixed(2)}</span>
+                      )}
+                    </div>
+                    
+                    <div className="border-t my-2"></div>
+                    
+                    <div className="flex justify-between font-semibold">
+                      <span>Total</span>
+                      <span>${totalWithShipping.toFixed(2)}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default Checkout;
