@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -6,73 +5,187 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useAuth } from "@/context/AuthContext";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Settings, ListOrdered, Heart, Shield, MapPin, CreditCard, Package, Calendar } from "lucide-react";
+import { Settings, ListOrdered, Heart, Shield, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+
+interface Order {
+  id: string;
+  created_at: string;
+  status: string;
+  tracking_number: string | null;
+  total_amount: number;
+}
+
+interface WishlistItem {
+  id: string;
+  product_id: string;
+  created_at: string;
+}
+
+interface Address {
+  id: string;
+  name: string;
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+  is_default: boolean;
+}
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("personal");
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
-  
-  // Mock data for demonstration
-  const orders = [
-    { id: "ORD-001", date: "2025-04-15", status: "Delivered", total: "$129.99" },
-    { id: "ORD-002", date: "2025-04-01", status: "Processing", total: "$79.50" },
-  ];
-  
-  const wishlistItems = [
-    { id: "1", name: "Premium Whiskey", price: "$59.99", addedOn: "2025-04-10" },
-    { id: "2", name: "Craft Beer Set", price: "$45.00", addedOn: "2025-04-05" },
-  ];
-  
-  const addresses = [
-    { id: "1", name: "Home", street: "123 Main Street", city: "New York", state: "NY", zip: "10001", isDefault: true },
-    { id: "2", name: "Office", street: "456 Business Ave", city: "Chicago", state: "IL", zip: "60601", isDefault: false },
-  ];
-  
-  const paymentMethods = [
-    { id: "1", type: "Credit Card", last4: "4242", expiry: "05/26", isDefault: true },
-    { id: "2", type: "PayPal", email: "user@example.com", isDefault: false },
-  ];
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
+  const [addresses, setAddresses] = useState<Address[]>([]);
+  const [newAddress, setNewAddress] = useState({
+    name: "",
+    street: "",
+    city: "",
+    state: "",
+    zip: ""
+  });
+  const [showAddressForm, setShowAddressForm] = useState(false);
 
   useEffect(() => {
-    // Check if user is authenticated
     if (!user) {
       navigate("/auth");
+      return;
     }
+    fetchOrders();
+    fetchWishlist();
+    fetchAddresses();
   }, [user, navigate]);
 
-  // Redirect if not logged in
-  if (!user) {
-    return null;
-  }
+  const fetchOrders = async () => {
+    if (!user) return;
+    const { data, error } = await supabase
+      .from('orders')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false });
 
-  const handleRemoveWishlistItem = (id: string) => {
-    toast.success("Item removed from wishlist");
-    // In a real app, you would call a function to remove the item from the wishlist
+    if (error) {
+      toast.error("Error fetching orders");
+      return;
+    }
+    setOrders(data || []);
   };
 
-  const handleSetDefaultAddress = (id: string) => {
+  const fetchWishlist = async () => {
+    if (!user) return;
+    const { data, error } = await supabase
+      .from('wishlist_items')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      toast.error("Error fetching wishlist");
+      return;
+    }
+    setWishlistItems(data || []);
+  };
+
+  const fetchAddresses = async () => {
+    if (!user) return;
+    const { data, error } = await supabase
+      .from('addresses')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('is_default', { ascending: false });
+
+    if (error) {
+      toast.error("Error fetching addresses");
+      return;
+    }
+    setAddresses(data || []);
+  };
+
+  const handleAddAddress = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!user) return;
+
+    const { error } = await supabase
+      .from('addresses')
+      .insert([{ ...newAddress, user_id: user.id }]);
+
+    if (error) {
+      toast.error("Error adding address");
+      return;
+    }
+
+    toast.success("Address added successfully");
+    setShowAddressForm(false);
+    setNewAddress({ name: "", street: "", city: "", state: "", zip: "" });
+    fetchAddresses();
+  };
+
+  const handleSetDefaultAddress = async (id: string) => {
+    if (!user) return;
+
+    const { error } = await supabase
+      .from('addresses')
+      .update({ is_default: false })
+      .eq('user_id', user.id);
+
+    if (error) {
+      toast.error("Error updating addresses");
+      return;
+    }
+
+    const { error: updateError } = await supabase
+      .from('addresses')
+      .update({ is_default: true })
+      .eq('id', id);
+
+    if (updateError) {
+      toast.error("Error setting default address");
+      return;
+    }
+
     toast.success("Default address updated");
-    // In a real app, you would call a function to set the default address
+    fetchAddresses();
   };
 
-  const handleRemoveAddress = (id: string) => {
+  const handleRemoveAddress = async (id: string) => {
+    if (!user) return;
+
+    const { error } = await supabase
+      .from('addresses')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      toast.error("Error removing address");
+      return;
+    }
+
     toast.success("Address removed");
-    // In a real app, you would call a function to remove the address
+    fetchAddresses();
   };
 
-  const handleSetDefaultPayment = (id: string) => {
-    toast.success("Default payment method updated");
-    // In a real app, you would call a function to set the default payment method
-  };
+  const handleRemoveFromWishlist = async (productId: string) => {
+    if (!user) return;
 
-  const handleRemovePayment = (id: string) => {
-    toast.success("Payment method removed");
-    // In a real app, you would call a function to remove the payment method
+    const { error } = await supabase
+      .from('wishlist_items')
+      .delete()
+      .eq('user_id', user.id)
+      .eq('product_id', productId);
+
+    if (error) {
+      toast.error("Error removing from wishlist");
+      return;
+    }
+
+    toast.success("Removed from wishlist");
+    fetchWishlist();
   };
 
   return (
@@ -109,10 +222,6 @@ const Profile = () => {
                     <MapPin className="w-4 h-4 mr-2" />
                     Addresses
                   </TabsTrigger>
-                  <TabsTrigger value="payments" className="w-full justify-start">
-                    <CreditCard className="w-4 h-4 mr-2" />
-                    Payment Methods
-                  </TabsTrigger>
                   <TabsTrigger value="policies" className="w-full justify-start">
                     <Shield className="w-4 h-4 mr-2" />
                     Policies
@@ -132,10 +241,6 @@ const Profile = () => {
                         <div>
                           <label className="text-sm font-medium">Email</label>
                           <p className="text-muted-foreground">{user?.email || "Not available"}</p>
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium">Name</label>
-                          <p className="text-muted-foreground">{user?.user_metadata?.name || "Not set"}</p>
                         </div>
                         <div className="pt-2 flex flex-wrap gap-2">
                           <Button variant="outline">Edit Profile</Button>
@@ -165,24 +270,30 @@ const Profile = () => {
                               <TableHead>Date</TableHead>
                               <TableHead>Status</TableHead>
                               <TableHead>Total</TableHead>
-                              <TableHead>Actions</TableHead>
+                              <TableHead>Tracking</TableHead>
                             </TableRow>
                           </TableHeader>
                           <TableBody>
                             {orders.map((order) => (
                               <TableRow key={order.id}>
                                 <TableCell>{order.id}</TableCell>
-                                <TableCell>{order.date}</TableCell>
+                                <TableCell>{new Date(order.created_at).toLocaleDateString()}</TableCell>
                                 <TableCell>
                                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                    order.status === "Delivered" ? "bg-green-100 text-green-800" : "bg-blue-100 text-blue-800"
+                                    order.status === "delivered" ? "bg-green-100 text-green-800" : "bg-blue-100 text-blue-800"
                                   }`}>
                                     {order.status}
                                   </span>
                                 </TableCell>
-                                <TableCell>{order.total}</TableCell>
+                                <TableCell>${order.total_amount}</TableCell>
                                 <TableCell>
-                                  <Button variant="ghost" size="sm">View Details</Button>
+                                  {order.tracking_number ? (
+                                    <span className="text-sm text-muted-foreground">
+                                      {order.tracking_number}
+                                    </span>
+                                  ) : (
+                                    <span className="text-sm text-muted-foreground">Not available</span>
+                                  )}
                                 </TableCell>
                               </TableRow>
                             ))}
@@ -193,10 +304,10 @@ const Profile = () => {
                   ) : (
                     <Card>
                       <CardContent className="flex flex-col items-center justify-center p-6">
-                        <Package className="h-12 w-12 text-muted-foreground mb-4" />
+                        <ListOrdered className="h-12 w-12 text-muted-foreground mb-4" />
                         <p className="text-muted-foreground">No orders yet</p>
                         <Button className="mt-4" asChild>
-                          <a href="/products">Continue Shopping</a>
+                          <a href="/products">Start Shopping</a>
                         </Button>
                       </CardContent>
                     </Card>
@@ -213,19 +324,20 @@ const Profile = () => {
                         <Card key={item.id}>
                           <CardContent className="p-4 flex justify-between items-center">
                             <div>
-                              <h3 className="font-medium">{item.name}</h3>
-                              <p className="text-muted-foreground text-sm">{item.price}</p>
-                              <p className="text-xs text-muted-foreground flex items-center mt-1">
-                                <Calendar className="h-3 w-3 mr-1" /> Added on {item.addedOn}
+                              <h3 className="font-medium">Product ID: {item.product_id}</h3>
+                              <p className="text-xs text-muted-foreground">
+                                Added on {new Date(item.created_at).toLocaleDateString()}
                               </p>
                             </div>
                             <div className="flex gap-2">
-                              <Button variant="outline" size="sm">Add to Cart</Button>
+                              <Button variant="outline" size="sm" asChild>
+                                <a href={`/product/${item.product_id}`}>View Product</a>
+                              </Button>
                               <Button 
                                 variant="ghost" 
                                 size="sm" 
                                 className="text-destructive"
-                                onClick={() => handleRemoveWishlistItem(item.id)}
+                                onClick={() => handleRemoveFromWishlist(item.product_id)}
                               >
                                 Remove
                               </Button>
@@ -251,8 +363,8 @@ const Profile = () => {
               {activeTab === "addresses" && (
                 <div>
                   <h2 className="text-2xl font-semibold mb-4">Saved Addresses</h2>
-                  {addresses.length > 0 ? (
-                    <div className="grid gap-4">
+                  {addresses.length > 0 && (
+                    <div className="grid gap-4 mb-4">
                       {addresses.map((address) => (
                         <Card key={address.id}>
                           <CardContent className="p-4">
@@ -260,7 +372,7 @@ const Profile = () => {
                               <div>
                                 <div className="flex items-center mb-1">
                                   <h3 className="font-medium">{address.name}</h3>
-                                  {address.isDefault && (
+                                  {address.is_default && (
                                     <span className="ml-2 text-xs bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded">
                                       Default
                                     </span>
@@ -272,8 +384,7 @@ const Profile = () => {
                                 </p>
                               </div>
                               <div className="flex gap-2">
-                                <Button variant="outline" size="sm">Edit</Button>
-                                {!address.isDefault && (
+                                {!address.is_default && (
                                   <Button 
                                     variant="ghost" 
                                     size="sm"
@@ -296,85 +407,80 @@ const Profile = () => {
                         </Card>
                       ))}
                     </div>
-                  ) : (
-                    <Card>
-                      <CardContent className="flex flex-col items-center justify-center p-6">
-                        <MapPin className="h-12 w-12 text-muted-foreground mb-4" />
-                        <p className="text-muted-foreground">No saved addresses</p>
-                        <Button className="mt-4">Add New Address</Button>
-                      </CardContent>
-                    </Card>
                   )}
-                  <div className="mt-4">
-                    <Button>Add New Address</Button>
-                  </div>
-                </div>
-              )}
 
-              {activeTab === "payments" && (
-                <div>
-                  <h2 className="text-2xl font-semibold mb-4">Payment Methods</h2>
-                  {paymentMethods.length > 0 ? (
-                    <div className="grid gap-4">
-                      {paymentMethods.map((payment) => (
-                        <Card key={payment.id}>
-                          <CardContent className="p-4">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <div className="flex items-center mb-1">
-                                  <h3 className="font-medium">
-                                    {payment.type} 
-                                    {payment.last4 && <span className="ml-1">•••• {payment.last4}</span>}
-                                  </h3>
-                                  {payment.isDefault && (
-                                    <span className="ml-2 text-xs bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded">
-                                      Default
-                                    </span>
-                                  )}
-                                </div>
-                                {payment.expiry && (
-                                  <p className="text-sm text-muted-foreground">Expires: {payment.expiry}</p>
-                                )}
-                                {payment.email && (
-                                  <p className="text-sm text-muted-foreground">{payment.email}</p>
-                                )}
-                              </div>
-                              <div className="flex gap-2">
-                                {!payment.isDefault && (
-                                  <Button 
-                                    variant="ghost" 
-                                    size="sm"
-                                    onClick={() => handleSetDefaultPayment(payment.id)}
-                                  >
-                                    Set as Default
-                                  </Button>
-                                )}
-                                <Button 
-                                  variant="ghost" 
-                                  size="sm" 
-                                  className="text-destructive"
-                                  onClick={() => handleRemovePayment(payment.id)}
-                                >
-                                  Remove
-                                </Button>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  ) : (
+                  {showAddressForm ? (
                     <Card>
-                      <CardContent className="flex flex-col items-center justify-center p-6">
-                        <CreditCard className="h-12 w-12 text-muted-foreground mb-4" />
-                        <p className="text-muted-foreground">No payment methods</p>
-                        <Button className="mt-4">Add Payment Method</Button>
+                      <CardContent className="p-4">
+                        <form onSubmit={handleAddAddress} className="space-y-4">
+                          <div>
+                            <label className="block text-sm font-medium mb-1">Name</label>
+                            <input
+                              type="text"
+                              className="w-full p-2 border rounded"
+                              value={newAddress.name}
+                              onChange={(e) => setNewAddress({...newAddress, name: e.target.value})}
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium mb-1">Street</label>
+                            <input
+                              type="text"
+                              className="w-full p-2 border rounded"
+                              value={newAddress.street}
+                              onChange={(e) => setNewAddress({...newAddress, street: e.target.value})}
+                              required
+                            />
+                          </div>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-sm font-medium mb-1">City</label>
+                              <input
+                                type="text"
+                                className="w-full p-2 border rounded"
+                                value={newAddress.city}
+                                onChange={(e) => setNewAddress({...newAddress, city: e.target.value})}
+                                required
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-medium mb-1">State</label>
+                              <input
+                                type="text"
+                                className="w-full p-2 border rounded"
+                                value={newAddress.state}
+                                onChange={(e) => setNewAddress({...newAddress, state: e.target.value})}
+                                required
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium mb-1">ZIP Code</label>
+                            <input
+                              type="text"
+                              className="w-full p-2 border rounded"
+                              value={newAddress.zip}
+                              onChange={(e) => setNewAddress({...newAddress, zip: e.target.value})}
+                              required
+                            />
+                          </div>
+                          <div className="flex gap-2">
+                            <Button type="submit">Save Address</Button>
+                            <Button 
+                              type="button" 
+                              variant="ghost"
+                              onClick={() => setShowAddressForm(false)}
+                            >
+                              Cancel
+                            </Button>
+                          </div>
+                        </form>
                       </CardContent>
                     </Card>
+                  ) : (
+                    <Button onClick={() => setShowAddressForm(true)}>Add New Address</Button>
                   )}
-                  <div className="mt-4">
-                    <Button>Add Payment Method</Button>
-                  </div>
                 </div>
               )}
 
