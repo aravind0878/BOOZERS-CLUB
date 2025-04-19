@@ -9,12 +9,13 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="inline-block font-bold text-2xl mb-4">
-              <span className="font-playfair">Thread</span>
-              <span className="text-brand-teal">Boutique</span>
+              <span className="font-playfair">Boozers</span>
+              <span className="text-brand-teal">Club</span>
             </Link>
             <p className="text-sm text-muted-foreground mb-4">
-              Quality printed tees for every style and occasion. Express yourself through our unique designs.
+              Guns Don't Need Agreement - Where Style Meets Attitude
             </p>
+            
             <div className="flex space-x-4">
               <a href="#" className="p-2 rounded-full hover:bg-secondary transition">
                 <Facebook className="h-5 w-5" />

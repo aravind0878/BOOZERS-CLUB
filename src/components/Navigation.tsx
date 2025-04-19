@@ -18,8 +18,8 @@ const Navigation = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="font-bold text-2xl">
-          <span className="font-playfair">Thread</span>
-          <span className="text-brand-teal">Boutique</span>
+          <span className="font-playfair">Boozers</span>
+          <span className="text-brand-teal">Club</span>
         </Link>
 
         {/* Desktop Navigation */}

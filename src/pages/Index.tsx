@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -21,10 +20,10 @@ const Index = () => {
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
               <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4 md:mb-6">
-                Express Yourself With Custom Printed Tees
+                Guns Don't Need Agreement
               </h1>
               <p className="text-lg mb-6 md:mb-8 text-muted-foreground">
-                Discover our collection of premium, eco-friendly t-shirts featuring unique designs that make a statement.
+                Unleash your style with bold, unapologetic designs that speak louder than words.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="lg" className="bg-brand-teal hover:bg-brand-teal/90">
