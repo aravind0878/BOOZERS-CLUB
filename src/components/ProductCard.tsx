@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { Product } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
+import WishlistButton from "./WishlistButton";
 
 interface ProductCardProps {
   product: Product;
@@ -29,6 +30,10 @@ const ProductCard = ({ product, className }: ProductCardProps) => {
             New
           </div>
         )}
+        {/* Add Wishlist Button */}
+        <div className="absolute top-2 left-2">
+          <WishlistButton productId={product.id} />
+        </div>
       </div>
       
       <div className="flex flex-col p-4">

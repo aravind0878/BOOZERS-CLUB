@@ -43,7 +43,11 @@ const Navigation = () => {
 
         {/* User Actions */}
         <div className="flex items-center space-x-4">
-          <Link to="/account" className="p-2 rounded-full hover:bg-secondary transition">
+          <Link 
+            to="/profile" 
+            className="p-2 rounded-full hover:bg-secondary transition"
+            title="My Profile"
+          >
             <User className="h-5 w-5" />
           </Link>
           
