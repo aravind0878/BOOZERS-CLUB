@@ -54,7 +54,7 @@ const OrderSuccess = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild variant="outline">
-                  <Link to="/account">View Order Status</Link>
+                  <Link to="/profile">View Order Status</Link>
                 </Button>
                 
                 <Button asChild className="bg-brand-teal hover:bg-brand-teal/90">
