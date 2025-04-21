@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -116,7 +117,7 @@ const Profile = () => {
       .insert([{ ...newAddress, user_id: user.id }]);
 
     if (error) {
-      toast.error("Error adding address");
+      toast.error("Error adding address: " + error.message);
       return;
     }
 
@@ -129,6 +130,7 @@ const Profile = () => {
   const handleSetDefaultAddress = async (id: string) => {
     if (!user) return;
 
+    // First, set all addresses to non-default
     const { error } = await supabase
       .from('addresses')
       .update({ is_default: false })
@@ -139,6 +141,7 @@ const Profile = () => {
       return;
     }
 
+    // Then set the selected address as default
     const { error: updateError } = await supabase
       .from('addresses')
       .update({ is_default: true })
@@ -186,6 +189,11 @@ const Profile = () => {
 
     toast.success("Removed from wishlist");
     fetchWishlist();
+  };
+
+  // Format currency in Indian Rupees
+  const formatCurrency = (amount: number) => {
+    return `₹${amount.toLocaleString('en-IN')}`;
   };
 
   return (
@@ -285,7 +293,7 @@ const Profile = () => {
                                     {order.status}
                                   </span>
                                 </TableCell>
-                                <TableCell>${order.total_amount}</TableCell>
+                                <TableCell>{formatCurrency(order.total_amount)}</TableCell>
                                 <TableCell>
                                   {order.tracking_number ? (
                                     <span className="text-sm text-muted-foreground">
@@ -456,7 +464,7 @@ const Profile = () => {
                             </div>
                           </div>
                           <div>
-                            <label className="block text-sm font-medium mb-1">ZIP Code</label>
+                            <label className="block text-sm font-medium mb-1">PIN Code</label>
                             <input
                               type="text"
                               className="w-full p-2 border rounded"
@@ -498,7 +506,7 @@ const Profile = () => {
                       <section>
                         <h3 className="text-lg font-semibold mb-2">Shipping Policy</h3>
                         <p className="text-muted-foreground">
-                          Free shipping on orders over $50. Standard delivery takes 3-5 business days. Express shipping options are available at checkout for an additional fee. International shipping is available to select countries.
+                          Free shipping on orders over ₹1,000. Standard delivery takes 3-5 business days. Express shipping options are available at checkout for an additional fee. International shipping is available to select countries.
                         </p>
                       </section>
                       <section>

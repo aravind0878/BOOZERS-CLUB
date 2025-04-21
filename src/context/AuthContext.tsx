@@ -40,12 +40,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signUp = async (email: string, password: string) => {
     try {
-      const { error } = await supabase.auth.signUp({
+      const { error, data } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          // No email confirmation required
+          data: {
+            email_confirmed: true
+          }
+        }
       });
+      
       if (error) throw error;
-      toast.success('Please check your email for the confirmation link');
+      
+      // If we have user data, sign them in immediately
+      if (data.user) {
+        await signIn(email, password);
+        toast.success('Account created successfully!');
+      }
     } catch (error: any) {
       toast.error(error.message || 'An error occurred during sign up');
       throw error;

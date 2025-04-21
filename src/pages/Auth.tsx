@@ -107,6 +107,9 @@ export default function Auth() {
               >
                 {loading ? "Creating account..." : "Create Account"}
               </Button>
+              <p className="text-xs text-center text-muted-foreground">
+                By signing up, you agree to our Terms of Service and Privacy Policy
+              </p>
             </TabsContent>
           </Tabs>
         </CardContent>

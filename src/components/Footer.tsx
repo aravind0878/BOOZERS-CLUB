@@ -21,7 +21,7 @@ const Footer = () => {
               <a href="#" className="p-2 rounded-full hover:bg-secondary transition">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="https://www.instagram.com/boozers_club?igsh=dWphc3NobW5kaXNr" className="p-2 rounded-full hover:bg-secondary transition">
+              <a href="https://www.instagram.com/boozers_club?igsh=dWphc3NobW5kaXNr" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-secondary transition">
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="#" className="p-2 rounded-full hover:bg-secondary transition">
@@ -94,11 +94,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="hover:text-brand-teal transition">
-                  Blog
-                </Link>
-              </li>
-              <li>
                 <Link to="/sustainability" className="hover:text-brand-teal transition">
                   Sustainability
                 </Link>
@@ -118,7 +113,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} ThreadBoutique. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} BoozersClub. All rights reserved.</p>
         </div>
       </div>
 
