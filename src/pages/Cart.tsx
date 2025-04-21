@@ -6,6 +6,7 @@ import CartItem from "@/components/CartItem";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
+import { formatIndianRupees } from "@/lib/formatters";
 
 const Cart = () => {
   const { items, totalItems, totalPrice, clearCart } = useCart();
@@ -84,7 +85,7 @@ const Cart = () => {
                   <div className="p-4 space-y-4">
                     <div className="flex justify-between py-2">
                       <span className="text-muted-foreground">Subtotal</span>
-                      <span>${totalPrice.toFixed(2)}</span>
+                      <span>{formatIndianRupees(totalPrice)}</span>
                     </div>
                     
                     <div className="flex justify-between py-2">
@@ -92,13 +93,13 @@ const Cart = () => {
                       {shippingCost === 0 ? (
                         <span className="text-green-600">Free</span>
                       ) : (
-                        <span>${shippingCost.toFixed(2)}</span>
+                        <span>{formatIndianRupees(shippingCost)}</span>
                       )}
                     </div>
                     
                     {shippingCost > 0 && (
                       <div className="text-xs text-muted-foreground italic">
-                        Add ${(50 - totalPrice).toFixed(2)} more to qualify for free shipping
+                        Add {formatIndianRupees(50 - totalPrice)} more to qualify for free shipping
                       </div>
                     )}
                     
@@ -106,7 +107,7 @@ const Cart = () => {
                     
                     <div className="flex justify-between py-2 font-semibold">
                       <span>Total</span>
-                      <span>${totalWithShipping.toFixed(2)}</span>
+                      <span>{formatIndianRupees(totalWithShipping)}</span>
                     </div>
                     
                     <Button 

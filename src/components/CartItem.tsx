@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { CartItem as CartItemType, useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
+import { formatIndianRupees } from "@/lib/formatters";
 
 interface CartItemProps {
   item: CartItemType;
@@ -54,7 +55,7 @@ const CartItem = ({ item }: CartItemProps) => {
             {product.name}
           </Link>
           <span className="font-medium text-brand-teal">
-            ${(product.price * quantity).toFixed(2)}
+            {formatIndianRupees(product.price * quantity)}
           </span>
         </div>
 

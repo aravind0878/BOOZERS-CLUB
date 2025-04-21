@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Product } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
 import WishlistButton from "./WishlistButton";
+import { formatIndianRupees } from "@/lib/formatters";
 
 interface ProductCardProps {
   product: Product;
@@ -41,7 +42,7 @@ const ProductCard = ({ product, className }: ProductCardProps) => {
           {product.name}
         </h3>
         <p className="text-sm font-semibold text-brand-teal">
-          ${product.price.toFixed(2)}
+          {formatIndianRupees(product.price)}
         </p>
         
         {/* Color variants preview */}

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
@@ -19,6 +18,7 @@ import { ArrowLeft, CreditCard, Lock } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/context/AuthContext";
+import { formatIndianRupees } from "@/lib/formatters";
 
 const Checkout = () => {
   const { items, totalItems, totalPrice, clearCart } = useCart();
@@ -26,7 +26,6 @@ const Checkout = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   
-  // Form state
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -45,7 +44,6 @@ const Checkout = () => {
     cardCVC: ""
   });
   
-  // Form state handling
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -59,11 +57,9 @@ const Checkout = () => {
     setFormData({ ...formData, [name]: value });
   };
   
-  // Shipping calculation (simplified for demo)
   const shippingCost = totalPrice >= 50 ? 0 : 5.99;
   const totalWithShipping = totalPrice + shippingCost;
   
-  // Save order to database
   const saveOrderToDatabase = async () => {
     if (!user) {
       toast({
@@ -76,14 +72,13 @@ const Checkout = () => {
     }
 
     try {
-      // 1. Create order in the database
       const { data: orderData, error: orderError } = await supabase
         .from('orders')
         .insert([{
           user_id: user.id,
           total_amount: totalWithShipping,
           status: 'processing',
-          tracking_number: generateTrackingNumber() // Generate a mock tracking number
+          tracking_number: generateTrackingNumber()
         }])
         .select()
         .single();
@@ -98,7 +93,6 @@ const Checkout = () => {
         return false;
       }
 
-      // 2. Add order items
       const orderItems = items.map(item => ({
         order_id: orderData.id,
         product_id: item.product.id,
@@ -132,16 +126,13 @@ const Checkout = () => {
     }
   };
 
-  // Generate a mock tracking number
   const generateTrackingNumber = () => {
     return `TRK${Math.floor(Math.random() * 10000000).toString().padStart(7, '0')}`;
   };
   
-  // Form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate form data
     if (!formData.firstName || !formData.lastName || !formData.email || 
         !formData.address || !formData.city || !formData.state || 
         !formData.zipCode || !formData.cardNumber || !formData.cardName || 
@@ -154,26 +145,21 @@ const Checkout = () => {
       return;
     }
 
-    // Save to database first
     const orderSaved = await saveOrderToDatabase();
     
     if (orderSaved) {
-      // Clear cart
       clearCart();
       
-      // Show success toast
       toast({
         title: "Order placed successfully!",
         description: "Check your email for order confirmation.",
         duration: 5000,
       });
       
-      // Redirect to success page
       navigate("/order-success");
     }
   };
   
-  // Check if cart is empty
   useEffect(() => {
     if (items.length === 0) {
       navigate("/cart");
@@ -189,10 +175,8 @@ const Checkout = () => {
           <h1 className="text-3xl font-playfair font-bold mb-8">Checkout</h1>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Checkout Form */}
             <div className="lg:col-span-2">
               <form onSubmit={handleSubmit}>
-                {/* Contact Information */}
                 <div className="bg-white rounded-lg border overflow-hidden mb-6">
                   <div className="p-4 border-b bg-muted/30">
                     <h2 className="font-medium">Contact Information</h2>
@@ -250,7 +234,6 @@ const Checkout = () => {
                   </div>
                 </div>
                 
-                {/* Shipping Address */}
                 <div className="bg-white rounded-lg border overflow-hidden mb-6">
                   <div className="p-4 border-b bg-muted/30">
                     <h2 className="font-medium">Shipping Address</h2>
@@ -359,7 +342,6 @@ const Checkout = () => {
                   </div>
                 </div>
                 
-                {/* Payment Information */}
                 <div className="bg-white rounded-lg border overflow-hidden mb-6">
                   <div className="p-4 border-b bg-muted/30">
                     <h2 className="font-medium">Payment Information</h2>
@@ -451,7 +433,6 @@ const Checkout = () => {
               </form>
             </div>
             
-            {/* Order Summary */}
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg border overflow-hidden sticky top-4">
                 <div className="p-4 border-b bg-muted/30">
@@ -478,7 +459,7 @@ const Checkout = () => {
                             Size: {item.size.toUpperCase()} / Color: {item.color}
                           </div>
                           <div className="text-sm mt-1">
-                            ${item.product.price.toFixed(2)} × {item.quantity}
+                            {formatIndianRupees(item.product.price)} × {item.quantity}
                           </div>
                         </div>
                       </div>
@@ -488,7 +469,7 @@ const Checkout = () => {
                   <div className="space-y-2 py-2">
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Subtotal</span>
-                      <span>${totalPrice.toFixed(2)}</span>
+                      <span>{formatIndianRupees(totalPrice)}</span>
                     </div>
                     
                     <div className="flex justify-between">
@@ -496,7 +477,7 @@ const Checkout = () => {
                       {shippingCost === 0 ? (
                         <span className="text-green-600">Free</span>
                       ) : (
-                        <span>${shippingCost.toFixed(2)}</span>
+                        <span>{formatIndianRupees(shippingCost)}</span>
                       )}
                     </div>
                     
@@ -504,7 +485,7 @@ const Checkout = () => {
                     
                     <div className="flex justify-between font-semibold">
                       <span>Total</span>
-                      <span>${totalWithShipping.toFixed(2)}</span>
+                      <span>{formatIndianRupees(totalWithShipping)}</span>
                     </div>
                   </div>
                 </div>
