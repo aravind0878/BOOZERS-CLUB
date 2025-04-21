@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Mail } from "lucide-react";
 
@@ -20,7 +21,7 @@ const Footer = () => {
               <a href="#" className="p-2 rounded-full hover:bg-secondary transition">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="p-2 rounded-full hover:bg-secondary transition">
+              <a href="https://www.instagram.com/boozers_club?igsh=dWphc3NobW5kaXNr" className="p-2 rounded-full hover:bg-secondary transition">
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="#" className="p-2 rounded-full hover:bg-secondary transition">
