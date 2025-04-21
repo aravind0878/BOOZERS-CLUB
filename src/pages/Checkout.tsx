@@ -16,11 +16,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ArrowLeft, CreditCard, Lock } from "lucide-react";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/context/AuthContext";
 
 const Checkout = () => {
   const { items, totalItems, totalPrice, clearCart } = useCart();
+  const { toast } = useToast();
   const navigate = useNavigate();
+  const { user } = useAuth();
   
   // Form state
   const [formData, setFormData] = useState({
@@ -59,12 +63,101 @@ const Checkout = () => {
   const shippingCost = totalPrice >= 50 ? 0 : 5.99;
   const totalWithShipping = totalPrice + shippingCost;
   
+  // Save order to database
+  const saveOrderToDatabase = async () => {
+    if (!user) {
+      toast({
+        title: "You must be logged in to complete your order",
+        description: "Please log in and try again.",
+        duration: 5000,
+      });
+      navigate("/auth");
+      return false;
+    }
+
+    try {
+      // 1. Create order in the database
+      const { data: orderData, error: orderError } = await supabase
+        .from('orders')
+        .insert([{
+          user_id: user.id,
+          total_amount: totalWithShipping,
+          status: 'processing',
+          tracking_number: generateTrackingNumber() // Generate a mock tracking number
+        }])
+        .select()
+        .single();
+
+      if (orderError) {
+        console.error("Error creating order:", orderError);
+        toast({
+          title: "Error creating order",
+          description: "There was a problem processing your order. Please try again.",
+          duration: 5000,
+        });
+        return false;
+      }
+
+      // 2. Add order items
+      const orderItems = items.map(item => ({
+        order_id: orderData.id,
+        product_id: item.product.id,
+        quantity: item.quantity,
+        price: item.product.price
+      }));
+
+      const { error: itemsError } = await supabase
+        .from('order_items')
+        .insert(orderItems);
+
+      if (itemsError) {
+        console.error("Error adding order items:", itemsError);
+        toast({
+          title: "Error processing order items",
+          description: "There was a problem processing your order items. Please try again.",
+          duration: 5000,
+        });
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      console.error("Order processing error:", error);
+      toast({
+        title: "Error processing order",
+        description: "An unexpected error occurred. Please try again.",
+        duration: 5000,
+      });
+      return false;
+    }
+  };
+
+  // Generate a mock tracking number
+  const generateTrackingNumber = () => {
+    return `TRK${Math.floor(Math.random() * 10000000).toString().padStart(7, '0')}`;
+  };
+  
   // Form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simulate order processing
-    setTimeout(() => {
+    // Validate form data
+    if (!formData.firstName || !formData.lastName || !formData.email || 
+        !formData.address || !formData.city || !formData.state || 
+        !formData.zipCode || !formData.cardNumber || !formData.cardName || 
+        !formData.cardExpiry || !formData.cardCVC) {
+      toast({
+        title: "Please fill out all required fields",
+        description: "All form fields are required to complete your order.",
+        duration: 5000,
+      });
+      return;
+    }
+
+    // Save to database first
+    const orderSaved = await saveOrderToDatabase();
+    
+    if (orderSaved) {
       // Clear cart
       clearCart();
       
@@ -77,7 +170,7 @@ const Checkout = () => {
       
       // Redirect to success page
       navigate("/order-success");
-    }, 1500);
+    }
   };
   
   // Check if cart is empty

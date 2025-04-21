@@ -13,26 +13,40 @@ interface WishlistButtonProps {
 
 const WishlistButton = ({ productId, className }: WishlistButtonProps) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const { user } = useAuth();
 
   useEffect(() => {
     if (user) {
       checkWishlistStatus();
+    } else {
+      setIsWishlisted(false);
     }
   }, [user, productId]);
 
   const checkWishlistStatus = async () => {
     if (!user) return;
 
-    const { data } = await supabase
-      .from('wishlist_items')
-      .select()
-      .eq('user_id', user.id)
-      .eq('product_id', productId)
-      .maybeSingle();
+    try {
+      setIsLoading(true);
+      const { data, error } = await supabase
+        .from('wishlist_items')
+        .select()
+        .eq('user_id', user.id)
+        .eq('product_id', productId)
+        .maybeSingle();
 
-    setIsWishlisted(!!data);
+      if (error) {
+        console.error("Error checking wishlist status:", error);
+      } else {
+        setIsWishlisted(!!data);
+      }
+    } catch (err) {
+      console.error("Error in wishlist check:", err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const toggleWishlist = async () => {
@@ -46,29 +60,60 @@ const WishlistButton = ({ productId, className }: WishlistButtonProps) => {
     }
 
     try {
+      setIsLoading(true);
+      
       if (isWishlisted) {
-        await supabase
+        // Remove from wishlist
+        const { error } = await supabase
           .from('wishlist_items')
           .delete()
           .eq('user_id', user.id)
           .eq('product_id', productId);
-      } else {
-        await supabase
-          .from('wishlist_items')
-          .insert([{ user_id: user.id, product_id: productId }]);
-      }
 
-      setIsWishlisted(!isWishlisted);
-      toast({
-        title: isWishlisted ? "Removed from wishlist" : "Added to wishlist",
-        duration: 2000,
-      });
+        if (error) throw error;
+        
+        setIsWishlisted(false);
+        toast({
+          title: "Removed from wishlist",
+          duration: 2000,
+        });
+      } else {
+        // Add to wishlist
+        const { error } = await supabase
+          .from('wishlist_items')
+          .insert([{ 
+            user_id: user.id, 
+            product_id: productId 
+          }]);
+
+        if (error) {
+          // Check if it's a unique constraint error (item already in wishlist)
+          if (error.code === '23505') {
+            toast({
+              title: "Item already in wishlist",
+              duration: 2000,
+            });
+            setIsWishlisted(true);
+            return;
+          }
+          throw error;
+        }
+        
+        setIsWishlisted(true);
+        toast({
+          title: "Added to wishlist",
+          duration: 2000,
+        });
+      }
     } catch (error) {
+      console.error("Wishlist operation error:", error);
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
         duration: 3000,
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -78,6 +123,7 @@ const WishlistButton = ({ productId, className }: WishlistButtonProps) => {
       size="icon"
       className={className}
       onClick={toggleWishlist}
+      disabled={isLoading}
       aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
     >
       {isWishlisted ? (
