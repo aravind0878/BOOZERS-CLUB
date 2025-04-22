@@ -15,11 +15,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowLeft, CreditCard, Lock } from "lucide-react";
+import { ArrowLeft, Lock, Smartphone } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/context/AuthContext";
 import { formatIndianRupees } from "@/lib/formatters";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const Checkout = () => {
   const { items, totalItems, totalPrice, clearCart } = useCart();
@@ -40,10 +41,8 @@ const Checkout = () => {
     customCountry: "",
     sameShipping: true,
     saveInfo: true,
-    cardNumber: "",
-    cardName: "",
-    cardExpiry: "",
-    cardCVC: ""
+    paymentMethod: "googlePay",
+    upiId: ""
   });
   
   const [useCustomCountry, setUseCustomCountry] = useState(false);
@@ -153,11 +152,20 @@ const Checkout = () => {
     
     if (!formData.firstName || !formData.lastName || !formData.email || 
         !formData.address || !formData.city || !formData.state || 
-        !formData.zipCode || !finalCountry || !formData.cardNumber || 
-        !formData.cardName || !formData.cardExpiry || !formData.cardCVC) {
+        !formData.zipCode || !finalCountry) {
       toast({
         title: "Please fill out all required fields",
         description: "All form fields are required to complete your order.",
+        duration: 5000,
+      });
+      return;
+    }
+
+    // Validate UPI ID if payment method is UPI
+    if (formData.paymentMethod === "upi" && !formData.upiId) {
+      toast({
+        title: "Please enter your UPI ID",
+        description: "UPI ID is required for UPI payment method.",
         duration: 5000,
       });
       return;
@@ -383,62 +391,53 @@ const Checkout = () => {
                   <div className="p-4 space-y-4">
                     <div className="flex items-center mb-4">
                       <div className="p-1 border rounded mr-2 bg-white">
-                        <CreditCard className="h-5 w-5 text-muted-foreground" />
+                        <Smartphone className="h-5 w-5 text-muted-foreground" />
                       </div>
-                      <span className="font-medium">Credit Card</span>
+                      <span className="font-medium">UPI Payment</span>
                     </div>
                     
-                    <div className="space-y-2">
-                      <Label htmlFor="cardNumber">Card Number</Label>
-                      <Input
-                        id="cardNumber"
-                        name="cardNumber"
-                        placeholder="1234 5678 9012 3456"
-                        value={formData.cardNumber}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="cardName">Name on Card</Label>
-                      <Input
-                        id="cardName"
-                        name="cardName"
-                        placeholder="John Doe"
-                        value={formData.cardName}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="cardExpiry">Expiration Date</Label>
-                        <Input
-                          id="cardExpiry"
-                          name="cardExpiry"
-                          placeholder="MM/YY"
-                          value={formData.cardExpiry}
-                          onChange={handleInputChange}
-                          required
-                        />
+                    <RadioGroup
+                      value={formData.paymentMethod}
+                      onValueChange={(value) => handleSelectChange("paymentMethod", value)}
+                      className="space-y-3"
+                    >
+                      <div className="flex items-center space-x-2 border p-3 rounded-md hover:bg-muted/10">
+                        <RadioGroupItem value="googlePay" id="googlePay" />
+                        <Label htmlFor="googlePay" className="flex items-center">
+                          <img src="https://logos-world.net/wp-content/uploads/2020/11/Google-Pay-Logo.png" alt="Google Pay" className="h-7 mr-2" />
+                          Google Pay
+                        </Label>
                       </div>
                       
-                      <div className="space-y-2">
-                        <Label htmlFor="cardCVC">CVC</Label>
+                      <div className="flex items-center space-x-2 border p-3 rounded-md hover:bg-muted/10">
+                        <RadioGroupItem value="phonePe" id="phonePe" />
+                        <Label htmlFor="phonePe" className="flex items-center">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/PhonePe_Logo.svg/1200px-PhonePe_Logo.svg.png" alt="PhonePe" className="h-7 mr-2" />
+                          PhonePe
+                        </Label>
+                      </div>
+                      
+                      <div className="flex items-center space-x-2 border p-3 rounded-md hover:bg-muted/10">
+                        <RadioGroupItem value="upi" id="otherUpi" />
+                        <Label htmlFor="otherUpi">Other UPI</Label>
+                      </div>
+                    </RadioGroup>
+                    
+                    {formData.paymentMethod === "upi" && (
+                      <div className="space-y-2 mt-4">
+                        <Label htmlFor="upiId">UPI ID</Label>
                         <Input
-                          id="cardCVC"
-                          name="cardCVC"
-                          placeholder="123"
-                          value={formData.cardCVC}
+                          id="upiId"
+                          name="upiId"
+                          placeholder="example@upi"
+                          value={formData.upiId}
                           onChange={handleInputChange}
-                          required
+                          required={formData.paymentMethod === "upi"}
                         />
                       </div>
-                    </div>
+                    )}
                     
-                    <div className="text-xs flex items-center text-muted-foreground mt-2">
+                    <div className="text-xs flex items-center text-muted-foreground mt-4">
                       <Lock className="h-3 w-3 mr-1" /> 
                       Your payment information is secure and encrypted
                     </div>
