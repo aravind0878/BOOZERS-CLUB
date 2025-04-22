@@ -20,10 +20,10 @@ const Index = () => {
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
               <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4 md:mb-6">
-                Guns Don't Need Agreement
+                | STYLE | DISCOVER | DEFINE |
               </h1>
               <p className="text-lg mb-6 md:mb-8 text-muted-foreground">
-                Unleash your style with bold, unapologetic designs that speak louder than words.
+                Revolution in Fashion is Coming
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="lg" className="bg-brand-teal hover:bg-brand-teal/90">
