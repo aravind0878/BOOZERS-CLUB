@@ -6,7 +6,7 @@ export const products: Product[] = [
     id: "tshirt-abstract-waves",
     name: "Abstract Waves Tee",
     price: 29.99,
-    image: "/sample.jpeg/",
+    image: "sample1.jpeg",
     description: "Express yourself with our Abstract Waves tee, featuring a unique wave pattern design printed on premium cotton. This comfortable, stylish t-shirt is perfect for casual outings or making a subtle artistic statement.",
     colors: ["#264653", "#2A9D8F", "#E9C46A"],
     sizes: ["s", "m", "l", "xl", "xxl"]
