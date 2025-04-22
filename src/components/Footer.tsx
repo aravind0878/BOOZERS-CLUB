@@ -14,7 +14,8 @@ const Footer = () => {
               <span className="text-brand-teal">Club</span>
             </Link>
             <p className="text-sm text-muted-foreground mb-4">
-              Guns Don't Need Agreement - Where Style Meets Attitude
+              We’re not just a brand, We're a movement.
+              Fashion that defies trends and creates culture. 
             </p>
             
             <div className="flex space-x-4">
