@@ -113,8 +113,8 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-sm text-muted-foreground text-center">
-          <p>&copy; {new Date().getFullYear()} BOOZER'S CLUB. All rights reserved.</p>
           <p>&copy; GUNS DON'T NEED AGREEMENTS!</p>
+          <p>&copy; {new Date().getFullYear()} BOOZER'S CLUB. All rights reserved.</p>
         </div>
       </div>
 
