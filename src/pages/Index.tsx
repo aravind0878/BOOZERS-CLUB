@@ -19,7 +19,7 @@ const Index = () => {
         <section className="relative bg-brand-light py-16 md:py-24 overflow-hidden">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
-              <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4 md:mb-6">
+              <h1 className="text-2xl md:text-3xl font-playfair font-bold mb-4 md:mb-6">
                 | STYLE | DISCOVER | DEFINE |
               </h1>
               <p className="text-lg mb-6 md:mb-8 text-muted-foreground">
