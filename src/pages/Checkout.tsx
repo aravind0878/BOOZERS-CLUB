@@ -35,7 +35,7 @@ const Checkout = () => {
     city: "",
     state: "",
     zipCode: "",
-    country: "US",
+    country: "IN",
     sameShipping: true,
     saveInfo: true,
     cardNumber: "",
@@ -72,13 +72,17 @@ const Checkout = () => {
     }
 
     try {
+      const orderDate = new Date();
+      const timezone = "Asia/Kolkata";
+
       const { data: orderData, error: orderError } = await supabase
         .from('orders')
         .insert([{
           user_id: user.id,
           total_amount: totalWithShipping,
           status: 'processing',
-          tracking_number: generateTrackingNumber()
+          tracking_number: generateTrackingNumber(),
+          timezone: timezone
         }])
         .select()
         .single();
@@ -297,6 +301,7 @@ const Checkout = () => {
                             <SelectValue placeholder="Select country" />
                           </SelectTrigger>
                           <SelectContent>
+                            <SelectItem value="IN">India</SelectItem>
                             <SelectItem value="US">United States</SelectItem>
                             <SelectItem value="CA">Canada</SelectItem>
                             <SelectItem value="UK">United Kingdom</SelectItem>
