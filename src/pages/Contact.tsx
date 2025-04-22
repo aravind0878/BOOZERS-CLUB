@@ -54,10 +54,10 @@ const Contact = () => {
               <div className="flex items-center justify-center space-x-4">
                 <Mail className="h-6 w-6 text-brand-teal" />
                 <a 
-                  href="mailto:boozersclub.yahoo.com" 
+                  href="mailto:boozersclub@yahoo.com" 
                   className="text-lg hover:text-brand-teal transition"
                 >
-                  boozersclub.yahoo.com
+                  boozersclub@yahoo.com
                 </a>
               </div>
               

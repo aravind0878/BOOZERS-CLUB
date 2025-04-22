@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -103,7 +104,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-medium mb-2">Free Shipping</h3>
                 <p className="text-gray-300">
-                  On all orders over $50, with fast and reliable delivery.
+                  On all orders over ₹1500, with fast and reliable delivery.
                 </p>
               </div>
             </div>
