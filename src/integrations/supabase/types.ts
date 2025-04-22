@@ -82,6 +82,7 @@ export type Database = {
           created_at: string
           id: string
           status: string
+          timezone: string | null
           total_amount: number
           tracking_number: string | null
           user_id: string
@@ -90,6 +91,7 @@ export type Database = {
           created_at?: string
           id?: string
           status?: string
+          timezone?: string | null
           total_amount: number
           tracking_number?: string | null
           user_id: string
@@ -98,6 +100,7 @@ export type Database = {
           created_at?: string
           id?: string
           status?: string
+          timezone?: string | null
           total_amount?: number
           tracking_number?: string | null
           user_id?: string

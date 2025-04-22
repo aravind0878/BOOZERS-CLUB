@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
@@ -36,6 +37,7 @@ const Checkout = () => {
     state: "",
     zipCode: "",
     country: "IN",
+    customCountry: "",
     sameShipping: true,
     saveInfo: true,
     cardNumber: "",
@@ -43,6 +45,8 @@ const Checkout = () => {
     cardExpiry: "",
     cardCVC: ""
   });
+  
+  const [useCustomCountry, setUseCustomCountry] = useState(false);
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -54,7 +58,14 @@ const Checkout = () => {
   };
   
   const handleSelectChange = (name: string, value: string) => {
-    setFormData({ ...formData, [name]: value });
+    if (name === "country" && value === "custom") {
+      setUseCustomCountry(true);
+    } else {
+      if (name === "country") {
+        setUseCustomCountry(false);
+      }
+      setFormData({ ...formData, [name]: value });
+    }
   };
   
   const shippingCost = totalPrice >= 50 ? 0 : 5.99;
@@ -137,10 +148,13 @@ const Checkout = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Get the final country value (either from dropdown or custom input)
+    const finalCountry = useCustomCountry ? formData.customCountry : formData.country;
+    
     if (!formData.firstName || !formData.lastName || !formData.email || 
         !formData.address || !formData.city || !formData.state || 
-        !formData.zipCode || !formData.cardNumber || !formData.cardName || 
-        !formData.cardExpiry || !formData.cardCVC) {
+        !formData.zipCode || !finalCountry || !formData.cardNumber || 
+        !formData.cardName || !formData.cardExpiry || !formData.cardCVC) {
       toast({
         title: "Please fill out all required fields",
         description: "All form fields are required to complete your order.",
@@ -294,7 +308,7 @@ const Checkout = () => {
                       <div className="space-y-2">
                         <Label htmlFor="country">Country</Label>
                         <Select 
-                          value={formData.country} 
+                          value={useCustomCountry ? "custom" : formData.country} 
                           onValueChange={(value) => handleSelectChange("country", value)}
                         >
                           <SelectTrigger id="country">
@@ -306,8 +320,22 @@ const Checkout = () => {
                             <SelectItem value="CA">Canada</SelectItem>
                             <SelectItem value="UK">United Kingdom</SelectItem>
                             <SelectItem value="AU">Australia</SelectItem>
+                            <SelectItem value="custom">Enter Manually</SelectItem>
                           </SelectContent>
                         </Select>
+                        
+                        {useCustomCountry && (
+                          <div className="mt-2">
+                            <Input
+                              id="customCountry"
+                              name="customCountry"
+                              value={formData.customCountry}
+                              onChange={handleInputChange}
+                              placeholder="Enter your country"
+                              required={useCustomCountry}
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                     
