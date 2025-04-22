@@ -111,18 +111,20 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-
+        
+        <div className="container mx-auto px-4 py-4 text-center">
+        <p className="text-sm text-muted-foreground">
+          Email us at: <a href="mailto:boozersclub@yahoo.com" className="hover:text-brand-teal transition">boozersclub@yahoo.com</a>
+        </p>
+      </div>
+        
         <div className="border-t border-border mt-8 pt-8 text-sm text-muted-foreground text-center">
           <p>&copy; GUNS DON'T NEED AGREEMENTS!</p>
           <p>&copy; {new Date().getFullYear()} BOOZER'S CLUB. All rights reserved.</p>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-4 text-center">
-        <p className="text-sm text-muted-foreground">
-          Email us at: <a href="mailto:boozersclub@yahoo.com" className="hover:text-brand-teal transition">boozersclub@yahoo.com</a>
-        </p>
-      </div>
+      
     </footer>
   );
 };
