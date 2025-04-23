@@ -7,6 +7,10 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { formatIndianRupees } from "@/lib/formatters";
+import React from "react";
+
+// Replace this with your WhatsApp phone number in international format, e.g. 919999999999
+const WHATSAPP_NUMBER = "919999999999";
 
 const Cart = () => {
   const { items, totalItems, totalPrice, clearCart } = useCart();
@@ -15,6 +19,28 @@ const Cart = () => {
   // Shipping calculation (simplified for demo)
   const shippingCost = totalPrice >= 50 ? 0 : 5.99;
   const totalWithShipping = totalPrice + shippingCost;
+
+  const getWhatsAppMessage = () => {
+    if (items.length === 0) {
+      return "Hi, I would like to place an order but my cart is empty.";
+    }
+    let message = "Hello, I would like to place an order:\n";
+    message += items
+      .map((item, idx) => (
+        `${idx + 1}. ${item.product.name} (Color: ${item.color}, Size: ${item.size}) x ${item.quantity} - ₹${(item.product.price * item.quantity).toFixed(2)}`
+      ))
+      .join("\n");
+    message += `\n\nSubtotal: ${formatIndianRupees(totalPrice)}`;
+    message += `\nShipping: ${shippingCost === 0 ? "Free" : formatIndianRupees(shippingCost)}`;
+    message += `\nTotal: ${formatIndianRupees(totalWithShipping)}`;
+    message += `\n\nPlease confirm my order.`;
+    return encodeURIComponent(message);
+  };
+
+  const handleWhatsAppOrder = () => {
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${getWhatsAppMessage()}`;
+    window.open(url, "_blank");
+  };
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -110,18 +136,16 @@ const Cart = () => {
                       <span>{formatIndianRupees(totalWithShipping)}</span>
                     </div>
                     
+                    {/* Changed checkout button to WhatsApp order button */}
                     <Button 
-                      className="w-full bg-brand-teal hover:bg-brand-teal/90 mt-4"
-                      onClick={() => navigate("/checkout")}
+                      className="w-full bg-green-500 hover:bg-green-600 mt-4"
+                      onClick={handleWhatsAppOrder}
                     >
-                      Proceed to Checkout
+                      Proceed to WhatsApp for Order
                     </Button>
                     
                     <div className="text-xs text-center text-muted-foreground mt-4">
-                      By proceeding to checkout, you agree to our{" "}
-                      <Link to="/terms" className="underline hover:text-foreground">
-                        Terms & Conditions
-                      </Link>
+                      By proceeding, your order details will be sent via WhatsApp.
                     </div>
                   </div>
                 </div>
@@ -137,3 +161,4 @@ const Cart = () => {
 };
 
 export default Cart;
+
