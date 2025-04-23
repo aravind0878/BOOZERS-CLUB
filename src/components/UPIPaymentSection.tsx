@@ -2,14 +2,40 @@
 import React, { useState } from "react";
 import { CheckCircle } from "lucide-react";
 
-const UPI_ADDRESS = "your-upi@bank"; // You can provide your real UPI later
+const UPI_ADDRESS = "gatadisathvik@ybl"; // Updated with your UPI ID
+const UPI_NAME = "Satvik Gatadi"; // Optional: use your name or leave blank
+const AMOUNT = ""; // Let user fill or set based on order (can be set dynamically if needed)
+const NOTE = "Boozers Club order payment";
+
+const getUPIDeepLink = (amount: number) => {
+  // Generates a UPI Deep Link URL for payment
+  return (
+    "upi://pay?" +
+    `pa=${encodeURIComponent(UPI_ADDRESS)}` +
+    `&pn=${encodeURIComponent(UPI_NAME)}` +
+    `&tn=${encodeURIComponent(NOTE)}` +
+    `&am=${encodeURIComponent(amount)}` +
+    "&cu=INR"
+  );
+};
 
 const UpiPaymentSection = ({
   onPaymentSuccess,
+  amount,
 }: {
   onPaymentSuccess: () => void;
+  amount?: number;
 }) => {
   const [paymentCompleted, setPaymentCompleted] = useState(false);
+
+  // For mobile devices, open the UPI deep link
+  const handleUPIPayClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const amt = amount ?? 0;
+    if (amt <= 0) return alert("Invalid amount");
+    const upiUrl = getUPIDeepLink(amt);
+    window.location.href = upiUrl;
+  };
 
   return (
     <div className="space-y-4 border rounded-lg p-4 bg-secondary/50">
@@ -28,30 +54,42 @@ const UpiPaymentSection = ({
           </span>
         </div>
         <div className="bg-muted p-2 rounded text-xs">
-          Send payment to this UPI ID through your app. Enter your Transaction ID after payment to confirm your order.
+          Send payment to this UPI ID through your app. <b>Or click the button below to initiate payment</b>.
+          Enter your Transaction ID after payment to confirm your order.
         </div>
         {!paymentCompleted ? (
-          <form
-            className="flex flex-col gap-2"
-            onSubmit={e => {
-              e.preventDefault();
-              setPaymentCompleted(true);
-              onPaymentSuccess();
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Enter UPI Transaction ID"
-              required
-              className="input border rounded p-2"
-            />
-            <button
-              className="btn bg-brand-teal text-white font-bold py-2 rounded hover:bg-brand-teal/80 transition"
-              type="submit"
+          <>
+            {typeof amount === "number" && amount > 0 && (
+              <button
+                className="btn mb-2 bg-[#2A9D8F] text-white font-semibold py-2 px-4 rounded shadow hover:bg-[#21867a] transition"
+                onClick={handleUPIPayClick}
+                type="button"
+              >
+                Pay ₹{amount.toFixed(2)} with UPI App
+              </button>
+            )}
+            <form
+              className="flex flex-col gap-2"
+              onSubmit={e => {
+                e.preventDefault();
+                setPaymentCompleted(true);
+                onPaymentSuccess();
+              }}
             >
-              Confirm Payment
-            </button>
-          </form>
+              <input
+                type="text"
+                placeholder="Enter UPI Transaction ID"
+                required
+                className="input border rounded p-2"
+              />
+              <button
+                className="btn bg-brand-teal text-white font-bold py-2 rounded hover:bg-brand-teal/80 transition"
+                type="submit"
+              >
+                Confirm Payment
+              </button>
+            </form>
+          </>
         ) : (
           <div className="flex items-center gap-2 text-success font-medium">
             <CheckCircle className="w-5 h-5" />

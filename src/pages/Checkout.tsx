@@ -37,7 +37,10 @@ const Checkout = () => {
             </div>
           </div>
 
-          <UpiPaymentSection onPaymentSuccess={() => setOrderConfirmed(true)} />
+          <UpiPaymentSection
+            onPaymentSuccess={() => setOrderConfirmed(true)}
+            amount={totalPrice}
+          />
         </>
       )}
     </div>
