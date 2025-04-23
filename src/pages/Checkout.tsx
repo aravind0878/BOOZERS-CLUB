@@ -1,10 +1,15 @@
+
 import React, { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import UpiPaymentSection from "@/components/UPIPaymentSection";
+import CustomerInfoForm, { CustomerInfo } from "@/components/CustomerInfoForm";
 
 const Checkout = () => {
   const { items, totalPrice, clearCart } = useCart();
   const [orderConfirmed, setOrderConfirmed] = useState(false);
+
+  // New: Store customer info locally after submission
+  const [customerInfo, setCustomerInfo] = useState<CustomerInfo | null>(null);
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-2xl">
@@ -37,10 +42,31 @@ const Checkout = () => {
             </div>
           </div>
 
-          <UpiPaymentSection
-            onPaymentSuccess={() => setOrderConfirmed(true)}
-            amount={totalPrice}
-          />
+          {/* ---- Step 1: Customer Info ---- */}
+          {!customerInfo ? (
+            <div className="mb-6">
+              <h3 className="font-semibold mb-2">Your Details</h3>
+              <CustomerInfoForm onSubmit={setCustomerInfo} />
+            </div>
+          ) : (
+            <>
+              <div className="mb-4 bg-secondary/30 rounded p-4">
+                <h4 className="font-semibold mb-1">Shipping Address</h4>
+                <div className="text-sm">
+                  <span className="font-medium">{customerInfo.firstName} {customerInfo.lastName}</span>
+                  <br />
+                  {customerInfo.address}, {customerInfo.city} – {customerInfo.pincode}
+                  <br />
+                  <span className="text-muted-foreground">Phone: {customerInfo.phone}</span>
+                </div>
+              </div>
+              {/* ---- Step 2: Payment ---- */}
+              <UpiPaymentSection
+                onPaymentSuccess={() => setOrderConfirmed(true)}
+                amount={totalPrice}
+              />
+            </>
+          )}
         </>
       )}
     </div>
