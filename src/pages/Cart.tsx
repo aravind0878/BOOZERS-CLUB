@@ -1,4 +1,3 @@
-
 import { Link, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -9,8 +8,8 @@ import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { formatIndianRupees } from "@/lib/formatters";
 import React from "react";
 
-// Replace this with your WhatsApp phone number in international format, e.g. 919999999999
-const WHATSAPP_NUMBER = "919999999999";
+// Update WhatsApp number to the actual number in international format (91 + number)
+const WHATSAPP_NUMBER = "918985909600";
 
 const Cart = () => {
   const { items, totalItems, totalPrice, clearCart } = useCart();
@@ -161,4 +160,3 @@ const Cart = () => {
 };
 
 export default Cart;
-

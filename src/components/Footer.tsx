@@ -1,6 +1,5 @@
-
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Mail } from "lucide-react";
+import { Facebook, Instagram, WhatsApp, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -25,8 +24,13 @@ const Footer = () => {
               <a href="https://www.instagram.com/boozers_club?igsh=dWphc3NobW5kaXNr" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-secondary transition">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="p-2 rounded-full hover:bg-secondary transition">
-                <Twitter className="h-5 w-5" />
+              <a 
+                href="https://wa.me/918985909600"
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="p-2 rounded-full hover:bg-secondary transition"
+              >
+                <WhatsApp className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -113,19 +117,20 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="container mx-auto px-4 py-4 text-center">
-        <p className="text-sm text-muted-foreground">
-          Email us at: <a href="mailto:boozersclub@yahoo.com" className="hover:text-brand-teal transition">boozersclub@yahoo.com</a>
-        </p>
-      </div>
+        <div className="container mx-auto px-4 py-4 text-center space-y-2">
+          <p className="text-sm text-muted-foreground">
+            Email us at: <a href="mailto:boozersclub@yahoo.com" className="hover:text-brand-teal transition">boozersclub@yahoo.com</a>
+          </p>
+          <p className="text-sm text-muted-foreground">
+            WhatsApp: <a href="https://wa.me/918985909600" className="hover:text-brand-teal transition">+91 8985909600</a>
+          </p>
+        </div>
         
         <div className="border-t border-border mt-8 pt-8 text-sm text-muted-foreground text-center">
           <p>&copy; GUNS DON'T NEED AGREEMENTS!</p>
           <p>&copy; {new Date().getFullYear()} BOOZER'S CLUB. All rights reserved.</p>
         </div>
       </div>
-
-      
     </footer>
   );
 };
