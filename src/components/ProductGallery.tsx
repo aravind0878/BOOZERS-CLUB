@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 interface ProductGalleryProps {
-  images: string[];
+  images: string;
   productName: string;
 }
 
