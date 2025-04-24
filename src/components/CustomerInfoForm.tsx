@@ -54,7 +54,7 @@ const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
         <Input
           {...register("phone", { required: "Phone is required", pattern: { value: /^[0-9]{10}$/, message: "Invalid phone" } })}
           id="phone"
-          placeholder="9876543210"
+          placeholder="00000000000"
           autoComplete="tel"
         />
         {errors.phone && <span className="text-red-600 text-xs">{errors.phone.message}</span>}
@@ -92,7 +92,7 @@ const CustomerInfoForm: React.FC<Props> = ({ onSubmit }) => {
         </div>
       </div>
       <Button type="submit" className="bg-brand-teal w-full" disabled={!isValid}>
-        Continue to Payment
+        proceed to  whatsapp for order
       </Button>
     </form>
   );
