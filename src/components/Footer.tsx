@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, WhatsApp, Mail } from "lucide-react";
+import { Facebook, Instagram, whatsapp, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -30,7 +30,7 @@ const Footer = () => {
                 rel="noopener noreferrer" 
                 className="p-2 rounded-full hover:bg-secondary transition"
               >
-                <WhatsApp className="h-5 w-5" />
+                <whatsapp className="h-5 w-5" />
               </a>
             </div>
           </div>
