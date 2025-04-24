@@ -71,7 +71,12 @@ const ProductDetail = () => {
     );
   }
   
-  
+  // Create array of product images (in a real app, each product would have multiple images)
+  const productImages = [
+    product.image,
+    "/images/image1.jpeg",
+    "/images/image1.jpeg",
+  ];
   
   return (
     <div className="min-h-screen flex flex-col">
