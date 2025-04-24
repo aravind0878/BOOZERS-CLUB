@@ -74,8 +74,8 @@ const ProductDetail = () => {
   // Create array of product images (in a real app, each product would have multiple images)
   const productImages = [
     product.image,
-    "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    "/images/image1.jpeg",
+    "/images/image1.jpeg",
   ];
   
   return (
@@ -106,7 +106,7 @@ const ProductDetail = () => {
                 {product.name}
               </h1>
               <div className="text-2xl font-medium text-brand-teal mb-4">
-                ${product.price.toFixed(2)}
+                ₹{product.price.toFixed(2)}
               </div>
               
               {/* Product Description */}
