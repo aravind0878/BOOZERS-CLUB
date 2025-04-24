@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { formatIndianRupees } from "@/lib/formatters";
-import React from "react";
+import CustomerInfoForm, { CustomerInfo } from "@/components/CustomerInfoForm";
+import React, { useState } from "react";
 
 // Update WhatsApp number to the actual number in international format (91 + number)
 const WHATSAPP_NUMBER = "918985909600";
@@ -14,16 +15,25 @@ const WHATSAPP_NUMBER = "918985909600";
 const Cart = () => {
   const { items, totalItems, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
+  const [showCustomerForm, setShowCustomerForm] = useState(false);
+  const [customerInfo, setCustomerInfo] = useState<CustomerInfo | null>(null);
   
   // Shipping calculation (simplified for demo)
   const shippingCost = totalPrice >= 50 ? 0 : 5.99;
   const totalWithShipping = totalPrice + shippingCost;
 
-  const getWhatsAppMessage = () => {
+  const getWhatsAppMessage = (customerInfo: CustomerInfo) => {
     if (items.length === 0) {
       return "Hi, I would like to place an order but my cart is empty.";
     }
-    let message = "Hello, I would like to place an order:\n";
+    let message = "Hello, I would like to place an order:\n\n";
+    message += `Customer Details:\n`;
+    message += `Name: ${customerInfo.firstName} ${customerInfo.lastName}\n`;
+    message += `Phone: ${customerInfo.phone}\n`;
+    message += `Address: ${customerInfo.address}\n`;
+    message += `City: ${customerInfo.city}\n`;
+    message += `Pincode: ${customerInfo.pincode}\n\n`;
+    message += "Order Details:\n";
     message += items
       .map((item, idx) => (
         `${idx + 1}. ${item.product.name} (Color: ${item.color}, Size: ${item.size}) x ${item.quantity} - ₹${(item.product.price * item.quantity).toFixed(2)}`
@@ -36,9 +46,14 @@ const Cart = () => {
     return encodeURIComponent(message);
   };
 
-  const handleWhatsAppOrder = () => {
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${getWhatsAppMessage()}`;
+  const handleWhatsAppOrder = (customerInfo: CustomerInfo) => {
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${getWhatsAppMessage(customerInfo)}`;
     window.open(url, "_blank");
+  };
+
+  const handleCustomerInfoSubmit = (data: CustomerInfo) => {
+    setCustomerInfo(data);
+    handleWhatsAppOrder(data);
   };
   
   return (
@@ -58,6 +73,18 @@ const Cart = () => {
               </p>
               <Button asChild className="bg-brand-teal hover:bg-brand-teal/90">
                 <Link to="/products">Start Shopping</Link>
+              </Button>
+            </div>
+          ) : showCustomerForm ? (
+            <div className="max-w-xl mx-auto">
+              <h2 className="text-xl font-semibold mb-4">Enter Your Details</h2>
+              <CustomerInfoForm onSubmit={handleCustomerInfoSubmit} />
+              <Button 
+                variant="outline" 
+                className="mt-4 w-full"
+                onClick={() => setShowCustomerForm(false)}
+              >
+                Back to Cart
               </Button>
             </div>
           ) : (
@@ -135,16 +162,15 @@ const Cart = () => {
                       <span>{formatIndianRupees(totalWithShipping)}</span>
                     </div>
                     
-                    {/* Changed checkout button to WhatsApp order button */}
                     <Button 
                       className="w-full bg-green-500 hover:bg-green-600 mt-4"
-                      onClick={handleWhatsAppOrder}
+                      onClick={() => setShowCustomerForm(true)}
                     >
-                      Proceed to WhatsApp for Order
+                      Continue with Order
                     </Button>
                     
                     <div className="text-xs text-center text-muted-foreground mt-4">
-                      By proceeding, your order details will be sent via WhatsApp.
+                      You'll be asked to provide your details before proceeding to WhatsApp.
                     </div>
                   </div>
                 </div>
