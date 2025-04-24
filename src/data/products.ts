@@ -7,7 +7,8 @@ export const products: Product[] = [
     name: "Abstract Waves Tee",
     price: 349,
     // Updated image to your uploaded image
-    image: "/images/image1.jpeg",
+    image: ["/images/image1.jpeg","/images/image1-alt1.jpeg", // second image (for scrolling)
+    "/images/image1-alt2.jpeg"],
     description: "Express yourself with our Abstract Waves tee, featuring a unique wave pattern design printed on premium cotton. This comfortable, stylish t-shirt is perfect for casual outings or making a subtle artistic statement.",
     colors: ["#264653", "#2A9D8F", "#E9C46A"],
     sizes: ["s", "m", "l", "xl", "xxl"]
@@ -60,7 +61,7 @@ export const products: Product[] = [
   {
     id: "tshirt-retro-vibes",
     name: "Retro Vibes Tee",
-    price: 349,
+    price: 49,
     image: "https://images.unsplash.com/photo-1589902860314-e910697dea18?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     description: "Step back in time with our Retro Vibes tee. This nostalgic design captures the essence of vintage style with a modern twist. The perfect addition to any casual wardrobe, offering both comfort and character.",
     colors: ["#F4A261", "#E76F51", "#E9C46A", "#FFFFFF"],
