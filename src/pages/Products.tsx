@@ -126,8 +126,8 @@ const Products = () => {
                 <h3 className="text-sm font-medium mb-2">Price Range</h3>
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>${priceRange[0]}</span>
-                    <span>${priceRange[1]}</span>
+                    <span>₹{priceRange[0]}</span>
+                    <span>₹{priceRange[1]}</span>
                   </div>
                   <input
                     type="range"
