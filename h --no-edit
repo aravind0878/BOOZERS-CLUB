@@ -1,0 +1,88 @@
+[33meac9c1f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m m
+[33m032ffbc[m Merge branch 'main' of https://github.com/aravind0878/BOOZERS-CLUB
+[33m0e87d16[m m
+[33m80b1cf2[m Update products.ts
+[33m6cd3923[m Update products.ts
+[33m83f4f06[m m
+[33m8b337ee[m m
+[33m75c26fa[m m
+[33md769674[m m
+[33m53a47ae[m uimgs
+[33m9ae6f98[m uimgs
+[33m267863f[m m
+[33mdc57024[m m
+[33m2ea3a61[m images
+[33m29fe797[m m
+[33mee3aec3[m rem xxl
+[33m7e33113[m add images
+[33m014f1f7[m image
+[33m560b62d[m hero
+[33m1e01cfb[m hero2
+[33mc829131[m hero
+[33mf786f96[m opesity
+[33m46814eb[m m
+[33m0a675b9[m m
+[33m1c29868[m m
+[33m4b05cdf[m m
+[33mc2e501d[m m
+[33mf737ff0[m m
+[33m7e82c8c[m m
+[33m05f26b4[m m
+[33m860fbc5[m m
+[33mecf2b90[m m
+[33m7bd0b9a[m m
+[33mf357112[m m
+[33mdbe4b0b[m m
+[33mf5e6518[m m
+[33m120b3ea[m m
+[33m9e95ade[m m
+[33me98aa4b[m m
+[33m6d44656[m m
+[33m20f8630[m m
+[33m39255c6[m m
+[33m7bd569c[m m
+[33m3474ce4[m commit
+[33m0dcd883[m commit
+[33m8a4815d[m Your message here
+[33m20edd2b[m Your message here
+[33mb74a4b5[m Add files via upload
+[33md00f6b6[m Delete public/lovable-uploads/69f16f34-adce-4f01-adfb-3958ed1ce2a3.png
+[33m2f7a516[m Update CustomerInfoForm.tsx
+[33m3e4089b[m feat: Add customer info and WhatsApp order flow
+[33m5775b17[m Fix: Import WhatsApp icon
+[33m012a518[m feat: Integrate WhatsApp for contact and orders
+[33mc171552[m feat: Add WhatsApp order functionality
+[33m9cd9541[m feat: Implement customer information form
+[33mb3683a6[m Fix: Implement UPI payment gateway
+[33ma0afdc0[m Fix: Avoid modifying read-only file
+[33mbef8769[m Update products.ts
+[33m71f3594[m Update products.ts
+[33m2c953ea[m Update products.ts
+[33m58f0afb[m Update Footer.tsx
+[33m8a39d98[m Update Footer.tsx
+[33mdead255[m Update Footer.tsx
+[33m2db7954[m Update Footer.tsx
+[33m0ab9d92[m Update products.ts
+[33mf5b8b5a[m Add files via upload
+[33m15489f9[m Refactor: Implement UPI payment gateway
+[33md33821e[m Update favicon
+[33ma6ebeef[m Run SQL migration
+[33m3567228[m Feat: Allow manual country entry and add timezone
+[33mff06bb4[m Fix: Footer content and email link
+[33m78e62bd[m Update Index.tsx
+[33m5f6b378[m Update Index.tsx
+[33mcaaf50d[m Fix: Order tracking error
+[33m83159e6[m Fix: Replace dollar symbol with rupee symbol
+[33m7b99e7a[m Add auto-confirmation and address saving
+[33me81b611[m Add social media links and content updates
+[33m7cf5132[m Fix: Order details not updating
+[33m66e2a5a[m Run SQL migrations
+[33mc8c311a[m Fix: Implement profile page features
+[33m3ddd450[m Fix: Profile section not opening
+[33mc640c81[m feat: Implement wishlist and profile features
+[33m966cf60[m Rename website and update tagline
+[33ma29a196[m Run SQL migration
+[33m9eba58d[m Connect to Supabase project
+[33m41640ff[m Add contact details
+[33m09684d3[m Add ecommerce website structure
+[33mb77dd2c[m Use tech stack vite_react_shadcn_ts
