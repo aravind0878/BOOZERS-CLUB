@@ -14,7 +14,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative bg-brand-light py-16 md:py-24 overflow-hidden">
@@ -37,9 +37,9 @@ const Index = () => {
             </div>
             <div className="md:w-1/2 relative">
               <div className="relative rounded-lg overflow-hidden aspect-[4/3] md:aspect-square">
-                <img 
-                  src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3" 
-                  alt="Fashion model wearing printed t-shirt" 
+                <img
+                  src="/images/hero.jpg?v=1"
+                  alt="Fashion model wearing printed t-shirt"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -52,14 +52,14 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl md:text-3xl font-playfair font-bold">New Arrivals</h2>
-              <Link 
-                to="/products?category=new" 
+              <Link
+                to="/products?category=new"
                 className="text-brand-teal flex items-center hover:underline"
               >
                 View All <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {newArrivals.map((product) => (
                 <ProductCard key={product.id} product={product} />
@@ -116,14 +116,14 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl md:text-3xl font-playfair font-bold">Best Sellers</h2>
-              <Link 
-                to="/products?category=bestsellers" 
+              <Link
+                to="/products?category=bestsellers"
                 className="text-brand-teal flex items-center hover:underline"
               >
                 View All <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {bestSellers.map((product) => (
                 <ProductCard key={product.id} product={product} />
@@ -142,9 +142,9 @@ const Index = () => {
               Subscribe to our newsletter for exclusive offers, new releases, and style inspiration delivered to your inbox.
             </p>
             <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
+              <input
+                type="email"
+                placeholder="Your email address"
                 className="px-4 py-2 rounded-md flex-grow text-foreground"
               />
               <Button className="bg-brand-navy hover:bg-brand-navy/90">
