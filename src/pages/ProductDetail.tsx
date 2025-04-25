@@ -71,37 +71,11 @@ const ProductDetail = () => {
     );
   }
 
-  // Create array of product images based on the product ID
-  const getProductImages = () => {
-    // Base image is always the product's main image
-    const images = [product.image];
-
-    // Add additional unique images based on product ID
-    if (product.id.includes('abstract')) {
-      images.push("/images/img3.jpg", "/images/img4.jpg");
-    } else if (product.id.includes('mountain')) {
-      images.push("/images/sample1.jpeg", "/images/img5.webp");
-    } else if (product.id.includes('geometric')) {
-      images.push("/images/img4.jpg", "/images/img3.jpg");
-    } else if (product.id.includes('urban')) {
-      images.push("/images/img5.webp", "/images/img3.jpg");
-    } else if (product.id.includes('botanical')) {
-      images.push("/images/img3.jpg", "/images/sample1.jpeg");
-    } else if (product.id.includes('cosmic')) {
-      images.push("/images/img4.jpg", "/images/img5.webp");
-    } else if (product.id.includes('retro')) {
-      images.push("/images/sample1.jpeg", "/images/img3.jpg");
-    } else if (product.id.includes('ocean')) {
-      images.push("/images/img5.webp", "/images/img4.jpg");
-    } else {
-      // Fallback for any other products
-      images.push("/images/img3.jpg", "/images/img4.jpg");
-    }
-
-    return images;
-  };
-
-  const productImages = getProductImages();
+  // Create array of product images using the product's main image and additionalImages
+  const productImages = [
+    product.image,
+    ...(product.additionalImages || [])
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">

@@ -9,6 +9,7 @@ export type Product = {
   description: string;
   colors: string[];
   sizes: string[];
+  additionalImages?: string[]; // Optional array of additional product images
 };
 
 export type CartItem = {
@@ -46,7 +47,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items));
-    
+
     // Calculate totals
     setTotalItems(items.reduce((sum, item) => sum + item.quantity, 0));
     setTotalPrice(items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0));
@@ -56,9 +57,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setItems(prevItems => {
       // Check if product is already in cart with same size and color
       const existingItemIndex = prevItems.findIndex(
-        item => 
-          item.product.id === product.id && 
-          item.size === size && 
+        item =>
+          item.product.id === product.id &&
+          item.size === size &&
           item.color === color
       );
 
@@ -79,10 +80,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const updateQuantity = (itemId: string, quantity: number) => {
-    setItems(prevItems => 
-      prevItems.map(item => 
-        item.product.id === itemId 
-          ? { ...item, quantity: Math.max(1, quantity) } 
+    setItems(prevItems =>
+      prevItems.map(item =>
+        item.product.id === itemId
+          ? { ...item, quantity: Math.max(1, quantity) }
           : item
       )
     );
@@ -93,11 +94,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <CartContext.Provider value={{ 
-      items, 
-      addToCart, 
-      removeFromCart, 
-      updateQuantity, 
+    <CartContext.Provider value={{
+      items,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
       clearCart,
       totalItems,
       totalPrice
