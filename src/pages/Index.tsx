@@ -21,7 +21,7 @@ const Index = () => {
           {/* Background Pattern Image */}
           <div className="absolute inset-0 z-0 opacity-15">
             <img
-              src="/product/images/fashion-pattern.jpg"
+              src="/product/images/heroback.jpeg"
               alt="Fashion pattern background"
               className="w-full h-full object-cover"
             />
