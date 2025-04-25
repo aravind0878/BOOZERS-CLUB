@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -32,6 +32,11 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(product?.colors[0] || "");
   const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || "");
+
+  // Scroll to top when component mounts or product ID changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   // Handle quantity changes
   const incrementQuantity = () => setQuantity(prev => prev + 1);
@@ -101,7 +106,7 @@ const ProductDetail = () => {
 
             {/* Product Info */}
             <div>
-              <h1 className="text-3xl font-playfair font-bold mb-2">
+              <h1 className="text-3xl font-bold mb-2 uppercase tracking-wider">
                 {product.name}
               </h1>
               <div className="text-2xl font-medium text-brand-teal mb-4">
@@ -216,7 +221,7 @@ const ProductDetail = () => {
 
           {/* Related Products */}
           <div className="border-t pt-12">
-            <h2 className="text-2xl font-playfair font-bold mb-8">You May Also Like</h2>
+            <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider">You May Also Like</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {relatedProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
