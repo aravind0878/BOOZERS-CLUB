@@ -44,25 +44,37 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      
+
       <main className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-playfair font-bold mb-6 text-center">Contact Us</h1>
-          
+          <h1 className="text-3xl font-bold mb-6 text-center uppercase tracking-wider">Contact Us</h1>
+
           <div className="bg-brand-light rounded-lg p-8 shadow-sm mb-12">
             <div className="flex flex-col space-y-6">
               <div className="flex items-center justify-center space-x-4">
                 <Mail className="h-6 w-6 text-brand-teal" />
-                <a 
-                  href="mailto:boozersclub@yahoo.com" 
+                <a
+                  href="mailto:boozersclub@yahoo.com"
                   className="text-lg hover:text-brand-teal transition"
                 >
                   boozersclub@yahoo.com
                 </a>
               </div>
-              
+
+              <div className="flex items-center justify-center space-x-4">
+                <Phone className="h-6 w-6 text-brand-teal" />
+                <a
+                  href="https://wa.me/918985909600"
+                  className="text-lg hover:text-brand-teal transition uppercase tracking-wider"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  WhatsApp: 8985909600
+                </a>
+              </div>
+
               <div className="border-t border-border my-4"></div>
-              
+
               <p className="text-muted-foreground text-center">
                 We'd love to hear from you! Feel free to reach out with any questions about our products, orders, or just to say hello.
               </p>
@@ -71,8 +83,8 @@ const Contact = () => {
 
           {/* FAQs Section */}
           <section className="mb-12">
-            <h2 className="text-2xl font-playfair font-bold mb-6">Frequently Asked Questions</h2>
-            
+            <h2 className="text-2xl font-bold mb-6 uppercase tracking-wider">Frequently Asked Questions</h2>
+
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
@@ -87,8 +99,8 @@ const Contact = () => {
 
           {/* Size Guide Section */}
           <section className="mb-12">
-            <h2 className="text-2xl font-playfair font-bold mb-6">Size Guide</h2>
-            
+            <h2 className="text-2xl font-bold mb-6 uppercase tracking-wider">Size Guide</h2>
+
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -133,9 +145,9 @@ const Contact = () => {
                 </tbody>
               </table>
             </div>
-            
+
             <div className="mt-4 p-4 bg-muted rounded-md">
-              <h3 className="text-lg font-medium mb-2">How to Measure</h3>
+              <h3 className="text-lg font-medium mb-2 uppercase tracking-wider">How to Measure</h3>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Chest:</strong> Measure around the fullest part of your chest, keeping the measuring tape under your arms and around your shoulder blades.</li>
                 <li><strong>Length:</strong> Measure from the top of your shoulder to the desired length down your torso.</li>
@@ -147,28 +159,28 @@ const Contact = () => {
 
           {/* Company Information */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold mb-6">About Boozers Club</h2>
-            
+            <h2 className="text-2xl font-bold mb-6 uppercase tracking-wider">About Boozers Club</h2>
+
             <div className="prose max-w-none text-muted-foreground">
               <p className="mb-4">
                 Boozers Club is a premium street fashion brand founded on the principle that style should make a statement. Our "Guns Don't Need Agreement" philosophy encapsulates our belief in bold self-expression and unapologetic individuality.
               </p>
-              
+
               <p className="mb-4">
                 Established in 2020, we've quickly grown from a small local brand to a recognized name in street fashion. Our designs combine edgy aesthetics with premium quality materials to deliver clothing that not only looks great but stands the test of time.
               </p>
-              
-              <h3 className="text-xl font-medium mt-6 mb-3 text-foreground">Our Mission</h3>
+
+              <h3 className="text-xl font-medium mt-6 mb-3 text-foreground uppercase tracking-wider">Our Mission</h3>
               <p className="mb-4">
                 To empower individuals to express their unique identity through clothing that combines attitude, quality, and style.
               </p>
-              
-              <h3 className="text-xl font-medium mt-6 mb-3 text-foreground">Sustainability Commitment</h3>
+
+              <h3 className="text-xl font-medium mt-6 mb-3 text-foreground uppercase tracking-wider">Sustainability Commitment</h3>
               <p className="mb-4">
                 We're committed to reducing our environmental footprint. Our t-shirts are made from 100% organic cotton, and we use eco-friendly water-based inks for all our prints. We've also implemented sustainable packaging solutions to minimize waste.
               </p>
-              
-              <h3 className="text-xl font-medium mt-6 mb-3 text-foreground">Community</h3>
+
+              <h3 className="text-xl font-medium mt-6 mb-3 text-foreground uppercase tracking-wider">Community</h3>
               <p>
                 Boozers Club is more than just a clothing brand—it's a community of like-minded individuals who value self-expression and authenticity. Join us on social media to become part of our growing family.
               </p>
@@ -176,7 +188,7 @@ const Contact = () => {
           </section>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );
