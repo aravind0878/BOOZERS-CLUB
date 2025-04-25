@@ -3,88 +3,81 @@ import { Product } from "@/context/CartContext";
 
 export const products: Product[] = [
   {
-    id: "arise1",
-    name: "Arise Mélange Gray T-Shirt",
+    id: "tshirt-abstract-waves",
+    name: "Abstract Waves Tee", 
     price: 349,
     image: "/images/arise1.jpg",
-    description: "Experience comfort and style with our Mélange Gray T-Shirt. Made from a premium cotton-blend fabric, this tee offers a relaxed fit, subtle texture, and versatile look perfect for everyday wear. Dress it up or keep it casual — it’s a must-have essential in any wardrobe.
-
-",
-   
+    description: "Express yourself with our Abstract Waves tee, featuring a unique wave pattern design printed on premium cotton. This comfortable, stylish t-shirt is perfect for casual outings or making a subtle artistic statement.",
+    colors: ["#264653", "#2A9D8F", "#E9C46A"],
     sizes: ["s", "m", "l", "xl" ],
     additionalImages: ["/images/arise2.jpg", "/images/arise3.jpg"]
   },
   {
-    id: "opr1",
-    name: "One Piece Jolly Roger Red T-Shirt",
+    id: "tshirt-mountain-sunset",
+    name: "Mountain Sunset Graphic Tee",
     price: 349,
-    image: "/images/opr1.jpg",
-    description: "Show your love for the globally popular anime and manga series One Piece with this vibrant red t-shirt, a comfortable and stylish way to express your fandom. Featuring the iconic Jolly Roger, the skull and crossbones symbol of the Straw Hat Pirates, this shirt is a must-have for any fan.This t-shirt is typically crafted from a soft and breathable fabric.",
-<<<<<<< HEAD
-   
+    description: "Capture the beauty of nature with our Mountain Sunset graphic tee. This premium shirt features a stunning mountain silhouette against a vibrant sunset, printed using eco-friendly inks on 100% organic cotton.",
+    colors: ["#264653", "#E76F51", "#F4A261", "#000000"],
     sizes: ["s", "m", "l", "xl"],
-=======
-    sizes: ["s", "m", "l", "Xl"],
->>>>>>> parent of 032ffbc (Merge branch 'main' of https://github.com/aravind0878/BOOZERS-CLUB)
     additionalImages: ["/images/opr2.jpg"]
   },
   {
-    id: "bzw1",
-    name: "Boozers Club Graphic White T-Shirt",
+    id: "tshirt-geometric-minimal",
+    name: "Geometric Minimal Tee",
     price: 349,
     image: "/images/bzw1.jpg",
-    description: "Show off a cool and casual vibe with this white t-shirt featuring a vibrant graphic that reads "Boozers Club" This tee is perfect for everyday wear and adding a touch of urban style to your look.",
-    
+    description: "Embrace modern minimalism with our Geometric tee. Featuring a clean, contemporary design with subtle geometric elements, this shirt is perfect for those who appreciate understated style and exceptional comfort.",
+    colors: ["#FFFFFF", "#000000", "#E9C46A"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bzw2.jpg"]
   },
   {
-    id: "arisew1",
-    name: "Arise White T-shirt,
+    id: "tshirt-urban-explorer",
+    name: "Urban Explorer Tee",
     price: 349,
     image: "/images/arisew1.jpg",
-    description: "Experience comfort and style with our Mélange Gray T-Shirt. Made from a premium cotton-blend fabric, this tee offers a relaxed fit, subtle texture, and versatile look perfect for everyday wear. Dress it up or keep it casual — it’s a must-have essential in any wardrobe.",
-    
+    description: "Navigate the concrete jungle in style with our Urban Explorer tee. This premium shirt features a modern cityscape design that celebrates urban adventure and exploration. Made with comfort and durability in mind.",
+    colors: ["#264653", "#2A9D8F", "#F4A261", "#000000"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/arisew2.jpg"]
   },
   {
-    id: "bzb1",
-    name: "Boozers Club Graphic Black T-Shirt",
+    id: "new-tshirt-botanical-dreams",
+    name: "Botanical Dreams Tee",
     price: 349,
     image:"/images/bzb1.jpg",
-    description: "Show off a cool and casual vibe with this white t-shirt featuring a vibrant graphic that reads "Boozers Club" This tee is perfect for everyday wear and adding a touch of urban style to your look.",
-   
+    description: "Bring nature's beauty to your wardrobe with our Botanical Dreams tee. This stunning design features intricate plant illustrations that celebrate the natural world. Printed on sustainable cotton using eco-friendly methods.",
+    colors: ["#FFFFFF", "#2A9D8F", "#264653"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bzb2.jpg"]
   },
   {
-    id: "opw1",
-    name: "One Piece Jolly Roger White T-Shirt",
+    id: "new-tshirt-cosmic-journey",
+    name: "Cosmic Journey Tee",
     price: 349,
     image:"/images/opw1.jpg",
-    description: "Show your love for the globally popular anime and manga series One Piece with this vibrant red t-shirt, a comfortable and stylish way to express your fandom. Featuring the iconic Jolly Roger, the skull and crossbones symbol of the Straw Hat Pirates, this shirt is a must-have for any fan.This t-shirt is typically crafted from a soft and breathable fabric.",
-   
+    description: "Explore the universe with our Cosmic Journey tee. This eye-catching design features a mesmerizing space-themed illustration that's sure to turn heads. Made from premium cotton for ultimate comfort and durability.",
+    colors: ["#000000", "#264653", "#E76F51"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/opw2.jpg"]
   },
   {
-    id: "bs1",
-    name: "Bombay Sapphire Graphic Milange Gray T-Shirt",
+    id: "new-tshirt-cosmic-journey",
+    name: "Cosmic Journey Tee",
     price: 349,
     image: "/images/bs1.jpg",
-    description: "Show your appreciation for the iconic Bombay Sapphire gin with this stylish gray t-shirt. Featuring the distinctive Bombay Sapphire logo, this tee offers a subtle yet sophisticated way to express your taste. It's a comfortable and casual piece perfect for everyday wear.",
-   
+    description: "Explore the universe with our Cosmic Journey tee. This eye-catching design features a mesmerizing space-themed illustration that's sure to turn heads. Made from premium cotton for ultimate comfort and durability.",
+    colors: ["#000000", "#264653", "#E76F51"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bs2.jpg"]
   },
   {
-    id: "bzblue1",
-    name: "Boozers Club Graphic Navy-Blue T-Shirt",
+    id: "tshirt-retro-vibes",
+    name: "Retro Vibes Tee",
     price: 349,
     image: "/images/bzblue1.jpg",
-    description: "Show off a cool and casual vibe with this white t-shirt featuring a vibrant graphic that reads "Boozers Club" This tee is perfect for everyday wear and adding a touch of urban style to your look.",
-   
+    description: "Step back in time with our Retro Vibes tee. This nostalgic design captures the essence of vintage style with a modern twist. The perfect addition to any casual wardrobe, offering both comfort and character.",
+    colors: ["#F4A261", "#E76F51", "#E9C46A", "#FFFFFF"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bzblue2.jpg"]
   }
