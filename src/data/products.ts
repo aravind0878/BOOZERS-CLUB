@@ -14,7 +14,7 @@ export const products: Product[] = [
   },
   {
     id: "tshirt-mountain-sunset",
-    name: "Mountain Sunset Graphic Tee",
+    name: "TShirt",
     price: 349,
     image: "/images/opr1.jpg",
     description: "Capture the beauty of nature with our Mountain Sunset graphic tee. This premium shirt features a stunning mountain silhouette against a vibrant sunset, printed using eco-friendly inks on 100% organic cotton.",
