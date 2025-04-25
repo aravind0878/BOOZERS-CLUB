@@ -6,81 +6,81 @@ export const products: Product[] = [
     id: "tshirt-abstract-waves",
     name: "Abstract Waves Tee",
     price: 349,
-    image: "/images/image1.jpeg",
+    image: "/images/arise1.jpg",
     description: "Express yourself with our Abstract Waves tee, featuring a unique wave pattern design printed on premium cotton. This comfortable, stylish t-shirt is perfect for casual outings or making a subtle artistic statement.",
     colors: ["#264653", "#2A9D8F", "#E9C46A"],
     sizes: ["s", "m", "l", "xl" ],
-    additionalImages: ["/images/img3.jpg", "/images/img4.jpg"]
+    additionalImages: ["/images/arise2.jpg", "/images/arise3.jpg"]
   },
   {
     id: "tshirt-mountain-sunset",
     name: "Mountain Sunset Graphic Tee",
     price: 349,
-    image: "/images/sample1.jpeg",
+    image: "/images/opr1.jpg",
     description: "Capture the beauty of nature with our Mountain Sunset graphic tee. This premium shirt features a stunning mountain silhouette against a vibrant sunset, printed using eco-friendly inks on 100% organic cotton.",
     colors: ["#264653", "#E76F51", "#F4A261", "#000000"],
     sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/img5.webp", "/images/img4.jpg"]
+    additionalImages: ["/images/opr2.jpg", "/images/opr3.jpg"]
   },
   {
     id: "tshirt-geometric-minimal",
     name: "Geometric Minimal Tee",
     price: 349,
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    image: "/images/bzw1.jpg",
     description: "Embrace modern minimalism with our Geometric tee. Featuring a clean, contemporary design with subtle geometric elements, this shirt is perfect for those who appreciate understated style and exceptional comfort.",
     colors: ["#FFFFFF", "#000000", "#E9C46A"],
     sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/img4.jpg", "/images/img3.jpg"]
+    additionalImages: ["/images/bzw2.jpg", "/images/bzw3.jpg"]
   },
   {
     id: "tshirt-urban-explorer",
     name: "Urban Explorer Tee",
     price: 349,
-    image: "https://images.unsplash.com/photo-1503341733017-1901578f9f1e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    image: "/images/arisew1.jpg",
     description: "Navigate the concrete jungle in style with our Urban Explorer tee. This premium shirt features a modern cityscape design that celebrates urban adventure and exploration. Made with comfort and durability in mind.",
     colors: ["#264653", "#2A9D8F", "#F4A261", "#000000"],
     sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/img5.webp", "/images/img3.jpg"]
+    additionalImages: ["/images/arisew2.jpg", "/images/arisew3.jpg"]
   },
   {
     id: "new-tshirt-botanical-dreams",
     name: "Botanical Dreams Tee",
     price: 349,
-    image: "https://images.unsplash.com/photo-1571455786673-9d9d6c194f90?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    image:"/images/bzb1.jpg",
     description: "Bring nature's beauty to your wardrobe with our Botanical Dreams tee. This stunning design features intricate plant illustrations that celebrate the natural world. Printed on sustainable cotton using eco-friendly methods.",
     colors: ["#FFFFFF", "#2A9D8F", "#264653"],
     sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/img3.jpg", "/images/sample1.jpeg"]
+    additionalImages: ["/images/bzb2.jpg", "/images/bzb3.jpg"]
   },
   {
     id: "new-tshirt-cosmic-journey",
     name: "Cosmic Journey Tee",
     price: 349,
-    image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    image:"/images/opw1.jpg",
     description: "Explore the universe with our Cosmic Journey tee. This eye-catching design features a mesmerizing space-themed illustration that's sure to turn heads. Made from premium cotton for ultimate comfort and durability.",
     colors: ["#000000", "#264653", "#E76F51"],
     sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/img4.jpg", "/images/img5.webp"]
+    additionalImages: ["/images/opw2.jpg", "/images/opw3.jpg"]
   },
   {
     id: "tshirt-retro-vibes",
     name: "Retro Vibes Tee",
     price: 349,
-    image: "https://images.unsplash.com/photo-1589902860314-e910697dea18?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    image: "/images/bs1.jpg",
     description: "Step back in time with our Retro Vibes tee. This nostalgic design captures the essence of vintage style with a modern twist. The perfect addition to any casual wardrobe, offering both comfort and character.",
     colors: ["#F4A261", "#E76F51", "#E9C46A", "#FFFFFF"],
     sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/sample1.jpeg", "/images/img3.jpg"]
+    additionalImages: ["/images/bs2.jpg", "/images/bs3.jpg"]
   },
   {
     id: "tshirt-ocean-waves",
     name: "Ocean Waves Tee",
     price: 349,
-    image: "https://images.unsplash.com/photo-1578766264605-c12d2a1b6432?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    image: "/images/bzb1.jpg",
     description: "Capture the serene power of the ocean with our Ocean Waves tee. This calming design features stylized wave patterns that evoke the peaceful rhythm of the sea. Printed on ultra-soft cotton for maximum comfort.",
     colors: ["#264653", "#2A9D8F", "#FFFFFF"],
     sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/img5.webp", "/images/img4.jpg"]
+    additionalImages: ["/images/bzb2.jpg", "/images/bzb3.jpg"]
   }
 ];
 
