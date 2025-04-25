@@ -19,7 +19,7 @@ const Index = () => {
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden">
           {/* Background Pattern Image */}
-          <div className="absolute inset-0 z-0 opacity-30">
+          <div className="absolute inset-0 z-0 opacity-10">
             <img
               src="/images/heroback.jpeg"
               alt="Fashion pattern background"
