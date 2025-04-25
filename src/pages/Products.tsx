@@ -13,43 +13,43 @@ const Products = () => {
   const category = searchParams.get("category") || "all";
   const [displayedProducts, setDisplayedProducts] = useState(products);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  
+
   // Filter states
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
-  
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
+
   useEffect(() => {
     // Filter products based on the category
     let filteredProducts = getProductsByCategory(category);
-    
+
     // Apply size filter if any sizes are selected
     if (selectedSizes.length > 0) {
-      filteredProducts = filteredProducts.filter(product => 
+      filteredProducts = filteredProducts.filter(product =>
         product.sizes.some(size => selectedSizes.includes(size))
       );
     }
-    
+
     // Apply price filter
-    filteredProducts = filteredProducts.filter(product => 
+    filteredProducts = filteredProducts.filter(product =>
       product.price >= priceRange[0] && product.price <= priceRange[1]
     );
-    
+
     setDisplayedProducts(filteredProducts);
   }, [category, selectedSizes, priceRange]);
-  
+
   const toggleSize = (size: string) => {
-    setSelectedSizes(prev => 
-      prev.includes(size) 
-        ? prev.filter(s => s !== size) 
+    setSelectedSizes(prev =>
+      prev.includes(size)
+        ? prev.filter(s => s !== size)
         : [...prev, size]
     );
   };
-  
+
   const resetFilters = () => {
     setSelectedSizes([]);
-    setPriceRange([0, 100]);
+    setPriceRange([0, 5000]);
   };
-  
+
   const getCategoryTitle = () => {
     switch (category) {
       case 'new':
@@ -64,15 +64,15 @@ const Products = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      
+
       <main className="flex-1 py-8">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-3xl font-playfair font-bold">{getCategoryTitle()}</h1>
-            
-            <Button 
-              variant="outline" 
-              size="sm" 
+
+            <Button
+              variant="outline"
+              size="sm"
               className="md:hidden"
               onClick={() => setIsFilterOpen(!isFilterOpen)}
             >
@@ -80,26 +80,26 @@ const Products = () => {
               {isFilterOpen ? "Close" : "Filter"}
             </Button>
           </div>
-          
+
           <div className="flex flex-col md:flex-row gap-8">
             {/* Filters - Desktop (always visible) and Mobile (toggled) */}
-            <aside 
+            <aside
               className={`md:w-64 bg-white rounded-lg border p-4 ${
                 isFilterOpen ? 'block' : 'hidden md:block'
               }`}
             >
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-medium">Filters</h2>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <Button
+                  variant="ghost"
+                  size="sm"
                   className="text-xs h-8 px-2"
                   onClick={resetFilters}
                 >
                   Reset
                 </Button>
               </div>
-              
+
               {/* Size Filter */}
               <div className="mb-6">
                 <h3 className="text-sm font-medium mb-2">Size</h3>
@@ -120,7 +120,7 @@ const Products = () => {
                   ))}
                 </div>
               </div>
-              
+
               {/* Price Filter */}
               <div>
                 <h3 className="text-sm font-medium mb-2">Price Range</h3>
@@ -132,7 +132,7 @@ const Products = () => {
                   <input
                     type="range"
                     min="0"
-                    max="100"
+                    max="5000"
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                     className="w-full"
@@ -140,7 +140,7 @@ const Products = () => {
                 </div>
               </div>
             </aside>
-            
+
             {/* Products Grid */}
             <div className="flex-1">
               {displayedProducts.length > 0 ? (
@@ -164,7 +164,7 @@ const Products = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );
