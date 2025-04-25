@@ -17,8 +17,17 @@ const Index = () => {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative bg-brand-light py-16 md:py-24 overflow-hidden">
-          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+        <section className="relative py-16 md:py-24 overflow-hidden">
+          {/* Background Pattern Image */}
+          <div className="absolute inset-0 z-0 opacity-15">
+            <img
+              src="/product/images/fashion-pattern.jpg"
+              alt="Fashion pattern background"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
               <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 uppercase tracking-wider">
                 | STYLE | DISCOVER | DEFINE |
@@ -36,7 +45,7 @@ const Index = () => {
               </div>
             </div>
             <div className="md:w-1/2 relative">
-              <div className="relative rounded-lg overflow-hidden aspect-[4/3] md:aspect-square">
+              <div className="relative rounded-lg overflow-hidden aspect-[4/3] md:aspect-square bg-white/80 shadow-xl">
                 <img
                   src="/images/hero.jpg?v=1"
                   alt="Fashion model wearing printed t-shirt"
