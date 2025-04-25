@@ -4,7 +4,7 @@ import { Product } from "@/context/CartContext";
 export const products: Product[] = [
   {
     id: "tshirt-abstract-waves",
-    name: "Abstract Waves Tee", 
+    name: "Arise Tee red color, 
     price: 349,
     image: "/images/arise1.jpg",
     description: "Express yourself with our Abstract Waves tee, featuring a unique wave pattern design printed on premium cotton. This comfortable, stylish t-shirt is perfect for casual outings or making a subtle artistic statement.",
