@@ -25,7 +25,7 @@ export const products: Product[] = [
     name: "Boozers Club Graphic White T-Shirt",
     price: 349,
     image: "/images/bzw1.jpg",
-    description: "Show off a cool and casual vibe with this white t-shirt featuring a vibrant graphic that reads "Boozers Club" This tee is perfect for everyday wear and adding a touch of urban style to your look.",
+    description: "Show off a cool and casual vibe with this white t-shirt featuring a vibrant graphic that reads Boozers Club This tee is perfect for everyday wear and adding a touch of urban style to your look.",
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bzw2.jpg"]
   },
@@ -43,7 +43,7 @@ export const products: Product[] = [
     name: "Boozers Club Graphic Black T-Shirt",
     price: 349,
     image:"/images/bzb1.jpg",
-    description: "Show off a cool and casual vibe with this white t-shirt featuring a vibrant graphic that reads "Boozers Club" This tee is perfect for everyday wear and adding a touch of urban style to your look.",
+    description: "Show off a cool and casual vibe with this white t-shirt featuring a vibrant graphic that reads Boozers Club This tee is perfect for everyday wear and adding a touch of urban style to your look.",
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bzb2.jpg"]
   },
@@ -70,7 +70,7 @@ export const products: Product[] = [
     name: "Boozers Club Graphic Navy-Blue T-Shirt",
     price: 349,
     image: "/images/bzblue1.jpg",
-    description: "Show off a cool and casual vibe with this white t-shirt featuring a vibrant graphic that reads "Boozers Club" This tee is perfect for everyday wear and adding a touch of urban style to your look.",
+    description: "Show off a cool and casual vibe with this white t-shirt featuring a vibrant graphic that reads Boozers Club This tee is perfect for everyday wear and adding a touch of urban style to your look.",
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bzblue2.jpg"]
   }
