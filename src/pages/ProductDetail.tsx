@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import ProductGallery from "@/components/ProductGallery";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -23,33 +23,33 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const { addToCart } = useCart();
-  
+
   // Get product details
   const product = id ? getProductById(id) : undefined;
   const relatedProducts = id ? getRelatedProducts(id) : [];
-  
+
   // State for product options
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(product?.colors[0] || "");
   const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || "");
-  
+
   // Handle quantity changes
   const incrementQuantity = () => setQuantity(prev => prev + 1);
   const decrementQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
-  
+
   // Handle add to cart
   const handleAddToCart = () => {
     if (!product) return;
-    
+
     addToCart(product, quantity, selectedSize, selectedColor);
-    
+
     toast({
       title: "Added to cart",
       description: `${product.name} (${selectedSize.toUpperCase()}, Qty: ${quantity}) has been added to your cart.`,
       duration: 3000,
     });
   };
-  
+
   // If product not found
   if (!product) {
     return (
@@ -70,18 +70,43 @@ const ProductDetail = () => {
       </div>
     );
   }
-  
-  // Create array of product images (in a real app, each product would have multiple images)
-  const productImages = [
-    product.image,
-    "/images/image1.jpeg",
-    "/images/image1.jpeg",
-  ];
-  
+
+  // Create array of product images based on the product ID
+  const getProductImages = () => {
+    // Base image is always the product's main image
+    const images = [product.image];
+
+    // Add additional unique images based on product ID
+    if (product.id.includes('abstract')) {
+      images.push("/images/img3.jpg", "/images/img4.jpg");
+    } else if (product.id.includes('mountain')) {
+      images.push("/images/sample1.jpeg", "/images/img5.webp");
+    } else if (product.id.includes('geometric')) {
+      images.push("/images/img4.jpg", "/images/img3.jpg");
+    } else if (product.id.includes('urban')) {
+      images.push("/images/img5.webp", "/images/img3.jpg");
+    } else if (product.id.includes('botanical')) {
+      images.push("/images/img3.jpg", "/images/sample1.jpeg");
+    } else if (product.id.includes('cosmic')) {
+      images.push("/images/img4.jpg", "/images/img5.webp");
+    } else if (product.id.includes('retro')) {
+      images.push("/images/sample1.jpeg", "/images/img3.jpg");
+    } else if (product.id.includes('ocean')) {
+      images.push("/images/img5.webp", "/images/img4.jpg");
+    } else {
+      // Fallback for any other products
+      images.push("/images/img3.jpg", "/images/img4.jpg");
+    }
+
+    return images;
+  };
+
+  const productImages = getProductImages();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      
+
       <main className="flex-1 py-8">
         <div className="container mx-auto px-4">
           {/* Breadcrumbs */}
@@ -92,14 +117,14 @@ const ProductDetail = () => {
             <span className="mx-2">/</span>
             <span>{product.name}</span>
           </div>
-          
+
           {/* Product Detail */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {/* Product Gallery */}
             <div>
               <ProductGallery images={productImages} productName={product.name} />
             </div>
-            
+
             {/* Product Info */}
             <div>
               <h1 className="text-3xl font-playfair font-bold mb-2">
@@ -108,12 +133,12 @@ const ProductDetail = () => {
               <div className="text-2xl font-medium text-brand-teal mb-4">
                 ₹{product.price.toFixed(2)}
               </div>
-              
+
               {/* Product Description */}
               <p className="text-muted-foreground mb-6">
                 {product.description}
               </p>
-              
+
               <div className="space-y-6">
                 {/* Color Selection */}
                 <div>
@@ -123,8 +148,8 @@ const ProductDetail = () => {
                       <button
                         key={color}
                         className={`w-8 h-8 rounded-full border-2 transition ${
-                          selectedColor === color 
-                            ? 'border-brand-teal' 
+                          selectedColor === color
+                            ? 'border-brand-teal'
                             : 'border-transparent hover:border-gray-300'
                         }`}
                         style={{ backgroundColor: color }}
@@ -134,7 +159,7 @@ const ProductDetail = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 {/* Size Selection */}
                 <div>
                   <div className="flex justify-between items-center mb-2">
@@ -143,8 +168,8 @@ const ProductDetail = () => {
                       Size Guide
                     </Link>
                   </div>
-                  <Select 
-                    value={selectedSize} 
+                  <Select
+                    value={selectedSize}
                     onValueChange={setSelectedSize}
                   >
                     <SelectTrigger className="w-full">
@@ -159,7 +184,7 @@ const ProductDetail = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 {/* Quantity Selector */}
                 <div>
                   <h3 className="text-sm font-medium mb-2">Quantity</h3>
@@ -186,16 +211,16 @@ const ProductDetail = () => {
                     </Button>
                   </div>
                 </div>
-                
+
                 {/* Add to Cart Button */}
-                <Button 
+                <Button
                   className="w-full py-6 bg-brand-teal hover:bg-brand-teal/90"
                   onClick={handleAddToCart}
                 >
                   <ShoppingBag className="mr-2 h-5 w-5" />
                   Add to Cart
                 </Button>
-                
+
                 {/* Additional Details */}
                 <div className="border-t pt-6 text-sm space-y-2">
                   <div className="flex">
@@ -214,7 +239,7 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Related Products */}
           <div className="border-t pt-12">
             <h2 className="text-2xl font-playfair font-bold mb-8">You May Also Like</h2>
@@ -226,7 +251,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

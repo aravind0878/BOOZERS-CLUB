@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 interface ProductGalleryProps {
-  images: string;
+  images: string[];
   productName: string;
 }
 
@@ -13,13 +13,13 @@ const ProductGallery = ({ images, productName }: ProductGalleryProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
@@ -35,7 +35,7 @@ const ProductGallery = ({ images, productName }: ProductGalleryProps) => {
           alt={`${productName} - Image ${currentIndex + 1}`}
           className="h-full w-full object-cover"
         />
-        
+
         {/* Navigation arrows (display on larger screens and on hover) */}
         {images.length > 1 && (
           <>
@@ -67,8 +67,8 @@ const ProductGallery = ({ images, productName }: ProductGalleryProps) => {
               key={index}
               className={cn(
                 "w-16 h-16 rounded-md overflow-hidden border-2 transition",
-                index === currentIndex 
-                  ? "border-brand-teal" 
+                index === currentIndex
+                  ? "border-brand-teal"
                   : "border-transparent hover:border-gray-300"
               )}
               onClick={() => setCurrentIndex(index)}
