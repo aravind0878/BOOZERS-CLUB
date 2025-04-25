@@ -76,11 +76,11 @@ export const products: Product[] = [
     id: "tshirt-ocean-waves",
     name: "Ocean Waves Tee",
     price: 349,
-    image: "/images/bzb1.jpg",
+    image: "/images/bzblue1.jpg",
     description: "Capture the serene power of the ocean with our Ocean Waves tee. This calming design features stylized wave patterns that evoke the peaceful rhythm of the sea. Printed on ultra-soft cotton for maximum comfort.",
     colors: ["#264653", "#2A9D8F", "#FFFFFF"],
     sizes: ["s", "m", "l", "xl"],
-    additionalImages: []
+    additionalImages: ["/images/bzblue2.jpg"]
   }
 ];
 
