@@ -20,17 +20,17 @@ const Index = () => {
         <section className="relative py-16 md:py-24 overflow-hidden">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
-              <h1 className="text-2xl md:text-3xl font-playfair font-bold mb-4 md:mb-6">
+              <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 uppercase tracking-wider">
                 | STYLE | DISCOVER | DEFINE |
               </h1>
-              <p className="text-lg mb-6 md:mb-8 text-muted-foreground">
+              <p className="text-lg mb-6 md:mb-8 text-white tracking-wide">
                 Revolution in Fashion is Coming
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-brand-teal hover:bg-brand-teal/90 shadow-lg shadow-brand-teal/50">
+                <Button asChild size="lg" className="bg-brand-teal hover:bg-brand-teal/90 shadow-lg shadow-brand-teal/50 uppercase tracking-wider font-medium">
                   <Link to="/products">Shop Collection</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 shadow-lg shadow-white/30">
+                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 shadow-lg shadow-white/30 uppercase tracking-wider font-medium">
                   <Link to="/about">Our Story</Link>
                 </Button>
               </div>
@@ -51,10 +51,10 @@ const Index = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl md:text-3xl font-playfair font-bold">New Arrivals</h2>
+              <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">New Arrivals</h2>
               <Link
                 to="/products?category=new"
-                className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm"
+                className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm uppercase tracking-wider font-medium"
               >
                 View All <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
@@ -78,8 +78,8 @@ const Index = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-medium mb-2">Premium Quality</h3>
-                <p className="text-gray-300">
+                <h3 className="text-xl font-medium mb-2 uppercase tracking-wider">Premium Quality</h3>
+                <p className="text-gray-300 tracking-wide">
                   100% organic cotton t-shirts that are both comfortable and durable.
                 </p>
               </div>
@@ -90,8 +90,8 @@ const Index = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-medium mb-2">Sustainable Printing</h3>
-                <p className="text-gray-300">
+                <h3 className="text-xl font-medium mb-2 uppercase tracking-wider">Sustainable Printing</h3>
+                <p className="text-gray-300 tracking-wide">
                   Eco-friendly water-based inks and sustainable production methods.
                 </p>
               </div>
@@ -102,8 +102,8 @@ const Index = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-medium mb-2">Free Shipping</h3>
-                <p className="text-gray-300">
+                <h3 className="text-xl font-medium mb-2 uppercase tracking-wider">Free Shipping</h3>
+                <p className="text-gray-300 tracking-wide">
                   On all orders over ₹1500, with fast and reliable delivery.
                 </p>
               </div>
@@ -115,10 +115,10 @@ const Index = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl md:text-3xl font-playfair font-bold">Best Sellers</h2>
+              <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">Best Sellers</h2>
               <Link
                 to="/products?category=bestsellers"
-                className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm"
+                className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm uppercase tracking-wider font-medium"
               >
                 View All <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
@@ -135,19 +135,19 @@ const Index = () => {
         {/* Call to Action */}
         <section className="bg-black/30 backdrop-blur-sm text-white py-16 border-y border-white/10">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider mb-4">
               Join Our Community
             </h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-lg mb-8 max-w-2xl mx-auto text-white tracking-wide">
               Subscribe to our newsletter for exclusive offers, new releases, and style inspiration delivered to your inbox.
             </p>
             <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-2">
               <input
                 type="email"
                 placeholder="Your email address"
-                className="px-4 py-2 rounded-md flex-grow text-foreground"
+                className="px-4 py-2 rounded-md flex-grow text-black bg-white/90 font-medium"
               />
-              <Button className="bg-brand-teal hover:bg-brand-teal/90 shadow-lg shadow-brand-teal/50">
+              <Button className="bg-brand-teal hover:bg-brand-teal/90 shadow-lg shadow-brand-teal/50 uppercase tracking-wider font-medium">
                 Subscribe
               </Button>
             </div>

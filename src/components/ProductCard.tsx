@@ -38,10 +38,10 @@ const ProductCard = ({ product, className }: ProductCardProps) => {
       </div>
 
       <div className="flex flex-col p-4">
-        <h3 className="font-medium text-base text-white mb-1">
+        <h3 className="font-medium text-base text-white mb-1 uppercase tracking-wider">
           {product.name}
         </h3>
-        <p className="text-sm font-semibold text-brand-teal" style={{ textShadow: '0 0 5px rgba(42, 157, 143, 0.5)' }}>
+        <p className="text-sm font-semibold text-brand-teal">
           {formatIndianRupees(product.price)}
         </p>
 
