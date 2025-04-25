@@ -44,12 +44,12 @@ const Index = () => {
                 </Button>
               </div>
             </div>
-            <div className="md:w-1/2 relative">
-              <div className="relative rounded-lg overflow-hidden aspect-[4/3] md:aspect-square bg-white/80 shadow-xl">
+            <div className="md:w-1/2 relative w-full max-w-sm mx-auto">
+              <div className="relative rounded-lg overflow-hidden h-[300px] sm:h-[350px] md:h-auto md:aspect-square bg-white/80 shadow-xl">
                 <img
                   src="/images/hero.jpg"
                   alt="Fashion model wearing printed t-shirt"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain md:object-cover"
                 />
               </div>
             </div>
