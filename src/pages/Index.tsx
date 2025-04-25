@@ -19,9 +19,9 @@ const Index = () => {
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden">
           {/* Background Pattern Image */}
-          <div className="absolute inset-0 z-0 opacity-15">
+          <div className="absolute inset-0 z-0 opacity-30">
             <img
-              src="/product/images/heroback.jpeg"
+              src="/images/heroback.jpeg"
               alt="Fashion pattern background"
               className="w-full h-full object-cover"
             />
@@ -47,7 +47,7 @@ const Index = () => {
             <div className="md:w-1/2 relative">
               <div className="relative rounded-lg overflow-hidden aspect-[4/3] md:aspect-square bg-white/80 shadow-xl">
                 <img
-                  src="/images/hero.jpg?v=1"
+                  src="/images/hero.jpg"
                   alt="Fashion model wearing printed t-shirt"
                   className="w-full h-full object-cover"
                 />
