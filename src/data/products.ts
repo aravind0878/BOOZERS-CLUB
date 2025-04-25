@@ -17,7 +17,7 @@ export const products: Product[] = [
     price: 349,
     image: "/images/opr1.jpg",
     description: "Show your love for the globally popular anime and manga series One Piece with this vibrant red t-shirt, a comfortable and stylish way to express your fandom. Featuring the iconic Jolly Roger, the skull and crossbones symbol of the Straw Hat Pirates, this shirt is a must-have for any fan.This t-shirt is typically crafted from a soft and breathable fabric.",
-    sizes: ["s", "m", "l", "Xl"],
+    sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/opr2.jpg"]
   },
   {
