@@ -15,7 +15,7 @@ const ProductCard = ({ product, className }: ProductCardProps) => {
     <Link
       to={`/product/${product.id}`}
       className={cn(
-        "group flex flex-col overflow-hidden rounded-lg border border-white/10 bg-black/20 backdrop-blur-sm transition-all hover:shadow-lg hover:shadow-brand-teal/20 hover:border-brand-teal/30",
+        "group flex flex-col overflow-hidden rounded-lg border border-border transition-all hover:shadow-md",
         className
       )}
     >
@@ -27,7 +27,7 @@ const ProductCard = ({ product, className }: ProductCardProps) => {
         />
         {/* New badge if needed */}
         {product.id.includes('new') && (
-          <div className="absolute top-2 right-2 bg-brand-teal text-white text-xs px-2 py-1 rounded shadow-lg shadow-brand-teal/50 animate-pulse">
+          <div className="absolute top-2 right-2 bg-brand-teal text-white text-xs px-2 py-1 rounded">
             New
           </div>
         )}
@@ -38,7 +38,7 @@ const ProductCard = ({ product, className }: ProductCardProps) => {
       </div>
 
       <div className="flex flex-col p-4">
-        <h3 className="font-medium text-base text-white mb-1 uppercase tracking-wider">
+        <h3 className="font-medium text-base mb-1 uppercase tracking-wider">
           {product.name}
         </h3>
         <p className="text-sm font-semibold text-brand-teal">

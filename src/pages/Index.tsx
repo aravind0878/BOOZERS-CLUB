@@ -17,20 +17,20 @@ const Index = () => {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-16 md:py-24 overflow-hidden">
+        <section className="relative bg-brand-light py-16 md:py-24 overflow-hidden">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
               <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 uppercase tracking-wider">
                 | STYLE | DISCOVER | DEFINE |
               </h1>
-              <p className="text-lg mb-6 md:mb-8 text-white tracking-wide">
+              <p className="text-lg mb-6 md:mb-8 text-muted-foreground tracking-wide">
                 Revolution in Fashion is Coming
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="lg" className="bg-brand-teal hover:bg-brand-teal/90 shadow-lg shadow-brand-teal/50 uppercase tracking-wider font-medium">
                   <Link to="/products">Shop Collection</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 shadow-lg shadow-white/30 uppercase tracking-wider font-medium">
+                <Button asChild size="lg" variant="outline" className="uppercase tracking-wider font-medium">
                   <Link to="/about">Our Story</Link>
                 </Button>
               </div>
@@ -69,7 +69,7 @@ const Index = () => {
         </section>
 
         {/* Feature Banner */}
-        <section className="bg-black/30 backdrop-blur-sm text-white py-16 border-y border-white/10">
+        <section className="bg-brand-navy text-white py-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="flex flex-col items-center">
@@ -133,12 +133,12 @@ const Index = () => {
         </section>
 
         {/* Call to Action */}
-        <section className="bg-black/30 backdrop-blur-sm text-white py-16 border-y border-white/10">
+        <section className="bg-brand-teal text-white py-16">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider mb-4">
               Join Our Community
             </h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto text-white tracking-wide">
+            <p className="text-lg mb-8 max-w-2xl mx-auto text-muted-foreground tracking-wide">
               Subscribe to our newsletter for exclusive offers, new releases, and style inspiration delivered to your inbox.
             </p>
             <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-2">

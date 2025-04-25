@@ -14,29 +14,29 @@ const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="py-4 border-b border-white/10 bg-black/30 backdrop-blur-md sticky top-0 z-50">
+    <header className="py-4 border-b sticky top-0 z-50 bg-white">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="font-bold text-2xl">
-          <span className="text-white uppercase tracking-wider">Boozers</span>
+          <span className="uppercase tracking-wider">Boozers</span>
           <span className="text-brand-teal uppercase tracking-wider">Club</span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-sm font-medium text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
+          <Link to="/" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
             Home
           </Link>
-          <Link to="/products" className="text-sm font-medium text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
+          <Link to="/products" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
             Shop All
           </Link>
-          <Link to="/products?category=new" className="text-sm font-medium text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
+          <Link to="/products?category=new" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
             New Arrivals
           </Link>
-          <Link to="/products?category=bestsellers" className="text-sm font-medium text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
+          <Link to="/products?category=bestsellers" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
             Best Sellers
           </Link>
-          <Link to="/contact" className="text-sm font-medium text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
+          <Link to="/contact" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
             Contact
           </Link>
         </nav>
@@ -108,39 +108,39 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden p-4 border-t border-white/10 bg-black/30 backdrop-blur-md">
+        <div className="md:hidden p-4 border-t bg-white">
           <nav className="flex flex-col space-y-4">
             <Link
               to="/"
-              className="text-sm font-medium py-2 text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
+              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/products"
-              className="text-sm font-medium py-2 text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
+              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
               onClick={() => setMobileMenuOpen(false)}
             >
               Shop All
             </Link>
             <Link
               to="/products?category=new"
-              className="text-sm font-medium py-2 text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
+              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
               onClick={() => setMobileMenuOpen(false)}
             >
               New Arrivals
             </Link>
             <Link
               to="/products?category=bestsellers"
-              className="text-sm font-medium py-2 text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
+              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
               onClick={() => setMobileMenuOpen(false)}
             >
               Best Sellers
             </Link>
             <Link
               to="/contact"
-              className="text-sm font-medium py-2 text-white hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
+              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact

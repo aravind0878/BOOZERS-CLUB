@@ -64,9 +64,9 @@
     letter-spacing: 1px;
   }
 
-  /* Black background */
+  /* White background */
   body {
-    background-color: #000000;
+    background-color: #ffffff;
   }
 
   .dark {
@@ -114,21 +114,11 @@
   }
 
   body {
-    @apply text-white;
+    @apply text-foreground;
   }
 
-  /* Improve text visibility */
+  /* Original text styling */
   h1, h2, h3 {
-    color: #ffffff;
     font-weight: 600;
-  }
-
-  p {
-    color: #e0e0e0;
-    line-height: 1.6;
-  }
-
-  a {
-    color: #ffffff;
   }
 }
