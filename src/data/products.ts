@@ -4,7 +4,7 @@ import { Product } from "@/context/CartContext";
 export const products: Product[] = [
   {
     id: "tshirt-abstract-waves",
-    name: "Arise Tee red color, 
+    name: "Arise Tee Red", 
     price: 349,
     image: "/images/arise1.jpg",
     description: "Express yourself with our Abstract Waves tee, featuring a unique wave pattern design printed on premium cotton. This comfortable, stylish t-shirt is perfect for casual outings or making a subtle artistic statement.",
@@ -81,6 +81,16 @@ export const products: Product[] = [
     colors: ["#F4A261", "#E76F51", "#E9C46A", "#FFFFFF"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bzblue2.jpg"]
+  },
+  {
+    id: "new-bsr",
+    name: "bonbay saphire tee",
+    price: 349,
+    image: "/images/bsr1.jpg",
+    description: "Make a statement with our Urban Street tee. Features bold street art-inspired graphics and premium quality cotton fabric. Perfect for those who want to stand out with an edgy urban style.",
+    colors: ["#000000", "#FFFFFF", "#2A9D8F"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/bsr2.jpg", "/images/bsr3.jpg"]
   }
 ];
 
