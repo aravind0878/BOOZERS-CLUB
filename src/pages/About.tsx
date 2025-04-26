@@ -44,7 +44,7 @@ const About = () => {
               
               <div className="my-10 relative rounded-lg overflow-hidden aspect-video">
                 <img 
-                  src="/images/hero.jpg" 
+                  src="/images/heroabt.jpeg" 
                   alt="Boozers Club team at work" 
                   className="w-full h-full object-cover"
                 />
