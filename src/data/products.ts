@@ -3,12 +3,12 @@ import { Product } from "@/context/CartContext";
 
 export const products: Product[] = [
   {
-    id: "Arise-Tee-Red",
-    name: "Arise Tee Red", 
+    id: "Arise-Tee-mgrey",
+    name: "Arise Soft Printed T-shirt", 
     price: 349,
     image: "/images/arise1.jpg",
-    description: "Express yourself with our Abstract Waves tee, featuring a unique wave pattern design printed on premium cotton. This comfortable, stylish t-shirt is perfect for casual outings or making a subtle artistic statement.",
-    colors: ["#264653", "#2A9D8F", "#E9C46A"],
+    description: " Embrace a fresh start every day with The Everbloom Tee. Crafted for exceptional comfort and lasting wear, this t-shirt features a subtle yet inspiring "Arise." graphic. It's a gentle reminder of continuous growth and the beauty of new beginnings. Perfect for adding a touch of positive energy to your everyday style.",
+    colors: ["#888888"],
     sizes: ["s", "m", "l", "xl" ],
     additionalImages: ["/images/arise2.jpg", "/images/arise3.jpg"]
   },
