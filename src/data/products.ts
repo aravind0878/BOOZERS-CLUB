@@ -17,7 +17,7 @@ export const products: Product[] = [
     price: 349,
     image: "/images/opr1.jpg",
     description: " Gear up with this eye-catching red t-shirt featuring the classic One Piece Jolly Roger logo. Made for comfort and perfect for expressing your fandom.",
-    colors: ["#000000"],
+    colors: ["#880000"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/opr2.jpg"]
   },

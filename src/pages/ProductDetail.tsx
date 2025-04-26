@@ -212,7 +212,7 @@ const ProductDetail = () => {
                   </div>
                   <div className="flex">
                     <span className="w-24 font-medium">Shipping:</span>
-                    <span className="text-muted-foreground">Free shipping on orders over $50</span>
+                    <span className="text-muted-foreground">Delivery charges apply</span>
                   </div>
                 </div>
               </div>
