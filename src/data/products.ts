@@ -8,7 +8,7 @@ export const products: Product[] = [
     price: 349,
     image: "/images/arise1.jpg",
     description: " Embrace a fresh start every day with The Everbloom Tee. Crafted for exceptional comfort and lasting wear, this t-shirt features a subtle yet inspiring Arise. graphic. It's a gentle reminder of continuous growth and the beauty of new beginnings. Perfect for adding a touch of positive energy to your everyday style.",
-    colors: ["#F4A261"],
+    colors: ["#888888"],
     sizes: ["s", "m", "l", "xl" ],
     additionalImages: ["/images/arise2.jpg", "/images/arise3.jpg"]
   },
