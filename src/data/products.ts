@@ -63,7 +63,7 @@ export const products: Product[] = [
     additionalImages: ["/images/opw2.jpg"]
   },
   {
-    id: "new-tshirt-cosmic-journey",
+    id: "7",
     name: "Cosmic Journey Tee",
     price: 349,
     image: "/images/bs1.jpg",
