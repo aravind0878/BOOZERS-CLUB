@@ -3,7 +3,7 @@ import { Product } from "@/context/CartContext";
 
 export const products: Product[] = [
   {
-    id: "tshirt-abstract-waves",
+    id: "Arise-Tee-Red",
     name: "Arise Tee Red", 
     price: 349,
     image: "/images/arise1.jpg",
