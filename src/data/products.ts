@@ -1,23 +1,22 @@
-
 import { Product } from "@/context/CartContext";
 
 export const products: Product[] = [
   {
-    id: "Arise-Tee-mgrey",
-    name: "Arise Soft Printed T-shirt", 
+    id: "Arise-mgrey",
+    name: "Arise Soft Printed T-shirt Milange-Grey", 
     price: 349,
     image: "/images/arise1.jpg",
-    description: " Embrace a fresh start every day with The Everbloom Tee. Crafted for exceptional comfort and lasting wear, this t-shirt features a subtle yet inspiring Arise. graphic. It's a gentle reminder of continuous growth and the beauty of new beginnings. Perfect for adding a touch of positive energy to your everyday style.",
+    description: " Embrace a fresh start every day with The Everbloom Tee. Crafted for exceptional comfort and lasting wear, this t-shirt features a subtle yet inspiring Arise graphic. It's a gentle reminder of continuous growth and the beauty of new beginnings. Perfect for adding a touch of positive energy to your everyday style.",
     colors: ["#888888"],
     sizes: ["s", "m", "l", "xl" ],
     additionalImages: ["/images/arise2.jpg", "/images/arise3.jpg"]
   },
   {
-    id: "tshirt-mountain-sunset",
-    name: "TShirt",
+    id: "onepiece black",
+    name: "One Piece Black Graphic Red T-Shirt",
     price: 349,
     image: "/images/opr1.jpg",
-    description: "Capture the beauty of nature with our Mountain Sunset graphic tee. This premium shirt features a stunning mountain silhouette against a vibrant sunset, printed using eco-friendly inks on 100% organic cotton.",
+    description: " Gear up with this eye-catching red t-shirt featuring the classic One Piece Jolly Roger logo. Made for comfort and perfect for expressing your fandom.",
     colors: ["#264653", "#E76F51", "#F4A261", "#000000"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/opr2.jpg"]
