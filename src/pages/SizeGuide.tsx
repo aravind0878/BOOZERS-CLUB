@@ -5,11 +5,11 @@ import Footer from "@/components/Footer";
 
 const SizeGuide = () => {
   const sizeGuide = {
-    small: { chest: "36-38", length: "27-28", sleeve: "8-8.5" },
-    medium: { chest: "39-41", length: "28-29", sleeve: "8.5-9" },
-    large: { chest: "42-44", length: "29-30", sleeve: "9-9.5" },
-    xlarge: { chest: "45-47", length: "30-31", sleeve: "9.5-10" },
-    xxlarge: { chest: "48-50", length: "31-32", sleeve: "10-10.5" }
+    xsmall: { chest: "34-36", length: "26", sleeve: "8" },
+    small: { chest: "36-38", length: "27", sleeve: "8.5" },
+    medium: { chest: "38-40", length: "28", sleeve: "9" },
+    large: { chest: "40-42", length: "29", sleeve: "9.5" },
+    xlarge: { chest: "42-44", length: "30", sleeve: "10" }
   };
 
   return (
@@ -22,7 +22,7 @@ const SizeGuide = () => {
           
           <div className="mb-8">
             <p className="text-muted-foreground mb-6 text-center">
-              Finding the perfect fit is essential. Use our detailed size guide to help you choose the right size for your Boozers Club apparel.
+              Finding the perfect fit is essential. Use our detailed size guide to help you choose the right size for your Boozers Club apparel. All measurements are in inches.
             </p>
             
             <div className="overflow-x-auto bg-card p-6 rounded-lg shadow-sm">
@@ -36,6 +36,12 @@ const SizeGuide = () => {
                   </tr>
                 </thead>
                 <tbody>
+                  <tr className="border-b">
+                    <td className="p-3 font-medium">X-Small (XS)</td>
+                    <td className="p-3">{sizeGuide.xsmall.chest}</td>
+                    <td className="p-3">{sizeGuide.xsmall.length}</td>
+                    <td className="p-3">{sizeGuide.xsmall.sleeve}</td>
+                  </tr>
                   <tr className="border-b">
                     <td className="p-3 font-medium">Small (S)</td>
                     <td className="p-3">{sizeGuide.small.chest}</td>
@@ -54,17 +60,11 @@ const SizeGuide = () => {
                     <td className="p-3">{sizeGuide.large.length}</td>
                     <td className="p-3">{sizeGuide.large.sleeve}</td>
                   </tr>
-                  <tr className="border-b">
+                  <tr>
                     <td className="p-3 font-medium">X-Large (XL)</td>
                     <td className="p-3">{sizeGuide.xlarge.chest}</td>
                     <td className="p-3">{sizeGuide.xlarge.length}</td>
                     <td className="p-3">{sizeGuide.xlarge.sleeve}</td>
-                  </tr>
-                  <tr>
-                    <td className="p-3 font-medium">XX-Large (XXL)</td>
-                    <td className="p-3">{sizeGuide.xxlarge.chest}</td>
-                    <td className="p-3">{sizeGuide.xxlarge.length}</td>
-                    <td className="p-3">{sizeGuide.xxlarge.sleeve}</td>
                   </tr>
                 </tbody>
               </table>

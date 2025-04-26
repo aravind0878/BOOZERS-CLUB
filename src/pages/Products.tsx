@@ -104,7 +104,7 @@ const Products = () => {
               <div className="mb-6">
                 <h3 className="text-sm font-medium mb-2">Size</h3>
                 <div className="flex flex-wrap gap-2">
-                  {['s', 'm', 'l', 'xl', 'xxl'].map(size => (
+                  {['s', 'm', 'l', 'xl'].map(size => (
                     <Button
                       key={size}
                       variant={selectedSizes.includes(size) ? "default" : "outline"}
