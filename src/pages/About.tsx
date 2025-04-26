@@ -14,7 +14,7 @@ const About = () => {
         <section className="bg-brand-light py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">About Boozers Club</h1>
+              <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6">About Boozer's Club</h1>
               <p className="text-lg text-muted-foreground">
                 Where style meets attitude. We create bold, unapologetic apparel for those who dare to express themselves.
               </p>
@@ -44,7 +44,7 @@ const About = () => {
               
               <div className="my-10 relative rounded-lg overflow-hidden aspect-video">
                 <img 
-                  src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3" 
+                  src="/images/hero.jpg" 
                   alt="Boozers Club team at work" 
                   className="w-full h-full object-cover"
                 />
