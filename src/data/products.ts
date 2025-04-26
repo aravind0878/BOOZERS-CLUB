@@ -87,7 +87,7 @@ export const products: Product[] = [
     price: 349,
     image: "/images/bsr1.jpg",
     description: "Make a statement with our Urban Street tee. Features bold street art-inspired graphics and premium quality cotton fabric. Perfect for those who want to stand out with an edgy urban style.",
-    colors: ["#000000", "#FFFFFF", "#2A9D8F"],
+    colors: ["#880000"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bsr2.jpg", "/images/bsr3.jpg"]
   }
