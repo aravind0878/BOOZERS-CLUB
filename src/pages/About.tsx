@@ -30,7 +30,7 @@ const About = () => {
               
               <div className="prose max-w-none text-muted-foreground">
                 <p className="mb-4">
-                  Boozers Club was born from a simple yet powerful idea: fashion should make a statement. Founded in 2020, we started as a small collective of designers and street culture enthusiasts who were tired of bland, meaningless clothing.
+                  Boozers Club was born from a simple yet powerful idea: fashion should make a statement. Founded in 2025, we started as a small collective of designers and street culture enthusiasts who were tired of bland, meaningless clothing.
                 </p>
                 
                 <p className="mb-4">
@@ -90,50 +90,9 @@ const About = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-medium mb-2">Sustainability</h3>
+                  <h3 className="text-xl font-medium mb-2">Community</h3>
                   <p className="text-sm text-muted-foreground">
-                    Eco-friendly production and materials. Style shouldn't come at the expense of our planet.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Team */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl font-playfair font-bold mb-10 text-center">Meet Our Team</h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-card p-6 rounded-lg shadow-sm">
-                  <div className="aspect-square rounded-full overflow-hidden w-24 h-24 mx-auto mb-4">
-                    <img 
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80&ixlib=rb-4.0.3" 
-                      alt="Founder" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h3 className="text-xl font-medium mb-1 text-center">Rajat Kumar</h3>
-                  <p className="text-brand-teal text-sm mb-3 text-center">Founder & Creative Director</p>
-                  <p className="text-sm text-muted-foreground text-center">
-                    With a background in street art and fashion design, Rajat brings a unique vision and creative direction to every Boozers Club design.
-                  </p>
-                </div>
-                
-                <div className="bg-card p-6 rounded-lg shadow-sm">
-                  <div className="aspect-square rounded-full overflow-hidden w-24 h-24 mx-auto mb-4">
-                    <img 
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80&ixlib=rb-4.0.3" 
-                      alt="Co-Founder" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h3 className="text-xl font-medium mb-1 text-center">Priya Singh</h3>
-                  <p className="text-brand-teal text-sm mb-3 text-center">Co-Founder & Head of Operations</p>
-                  <p className="text-sm text-muted-foreground text-center">
-                    Priya's expertise in sustainable fashion and business management helps keep Boozers Club running smoothly while staying true to our values.
+                    We're building more than a brand—we're creating a community of individuals who dare to stand out.
                   </p>
                 </div>
               </div>
