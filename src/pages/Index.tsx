@@ -4,12 +4,12 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
-import { getNewArrivals, getBestSellers } from "@/data/products";
+import { getNewArrivals, products } from "@/data/products";
 import { ArrowRight } from "lucide-react";
 
 const Index = () => {
   const newArrivals = getNewArrivals();
-  const bestSellers = getBestSellers();
+  const allProducts = products.slice(0, 8); // Show first 8 products
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -120,13 +120,13 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Best Sellers Section */}
+        {/* All Products Section */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">Best Sellers</h2>
+              <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">All Products</h2>
               <Link
-                to="/products?category=bestsellers"
+                to="/products"
                 className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm uppercase tracking-wider font-medium"
               >
                 View All <ArrowRight className="ml-1 h-4 w-4" />
@@ -134,7 +134,7 @@ const Index = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {bestSellers.map((product) => (
+              {allProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
