@@ -4,12 +4,13 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
-import { getNewArrivals, products } from "@/data/products";
+import { products } from "@/data/products";
 import { ArrowRight } from "lucide-react";
 
 const Index = () => {
-  const newArrivals = getNewArrivals();
-  const allProducts = products.slice(0, 8); // Show first 8 products
+  // Use all products for both sections
+  const newArrivals = products;
+  const allProducts = products.slice(0, 8); // Show first 8 products in All Products section
 
   return (
     <div className="min-h-screen flex flex-col">
