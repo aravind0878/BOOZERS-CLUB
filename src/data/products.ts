@@ -97,24 +97,8 @@ export const getProductById = (id: string): Product | undefined => {
   return products.find(product => product.id === id);
 };
 
-export const getNewArrivals = (): Product[] => {
-  return products.filter(product => product.id.includes('new'));
-};
-
-export const getBestSellers = (): Product[] => {
-  // For demo purposes, just return some products as "best sellers"
-  return products.slice(0, 4);
-};
-
 export const getProductsByCategory = (category: string): Product[] => {
-  switch (category) {
-    case 'new':
-      return getNewArrivals();
-    case 'bestsellers':
-      return getBestSellers();
-    default:
-      return products;
-  }
+  return products;
 };
 
 // Function to get related products (excludes current product)
