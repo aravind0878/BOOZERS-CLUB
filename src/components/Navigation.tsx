@@ -33,12 +33,6 @@ const Navigation = () => {
           <Link to="/products?category=new" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
             New Arrivals
           </Link>
-          <Link to="/products?category=bestsellers" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
-            Best Sellers
-          </Link>
-          <Link to="/contact" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
-            Contact
-          </Link>
         </nav>
 
         {/* User Actions */}
@@ -130,13 +124,6 @@ const Navigation = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               New Arrivals
-            </Link>
-            <Link
-              to="/products?category=bestsellers"
-              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Best Sellers
             </Link>
             <Link
               to="/contact"

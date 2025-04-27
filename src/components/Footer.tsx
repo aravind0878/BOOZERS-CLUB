@@ -49,16 +49,6 @@ const Footer = () => {
                   New Arrivals
                 </Link>
               </li>
-              <li>
-                <Link to="/products?category=bestsellers" className="hover:text-brand-teal transition">
-                  Best Sellers
-                </Link>
-              </li>
-              <li>
-                <Link to="/products?category=sale" className="hover:text-brand-teal transition">
-                  Sale
-                </Link>
-              </li>
             </ul>
           </div>
 
