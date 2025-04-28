@@ -78,6 +78,65 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Custom Order Section */}
+        <section className="py-16 bg-secondary/10">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">Custom Orders</h2>
+              <Link
+                to="/contact"
+                className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm uppercase tracking-wider font-medium"
+              >
+                Get Started <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-lg p-8 text-center shadow-sm">
+                <div className="bg-brand-teal/20 rounded-full p-4 mb-6 mx-auto w-16 h-16 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-medium mb-4">Design Your Own</h3>
+                <p className="text-muted-foreground">
+                  Create your unique design with our expert team. Perfect for expressing your individual style.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-lg p-8 text-center shadow-sm">
+                <div className="bg-brand-teal/20 rounded-full p-4 mb-6 mx-auto w-16 h-16 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-medium mb-4">Bulk Orders</h3>
+                <p className="text-muted-foreground">
+                  Perfect for teams, events, or businesses. Get custom designs with bulk pricing options.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-lg p-8 text-center shadow-sm">
+                <div className="bg-brand-teal/20 rounded-full p-4 mb-6 mx-auto w-16 h-16 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-medium mb-4">Quality Guaranteed</h3>
+                <p className="text-muted-foreground">
+                  Premium materials and expert printing ensure your custom designs look perfect every time.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center mt-12">
+              <Button asChild size="lg" className="bg-brand-teal hover:bg-brand-teal/90">
+                <Link to="/contact">Start Your Custom Order</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* Feature Banner */}
         <section className="bg-brand-navy text-white py-16">
           <div className="container mx-auto px-4">
