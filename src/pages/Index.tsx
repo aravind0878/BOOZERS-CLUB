@@ -7,10 +7,26 @@ import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { ArrowRight } from "lucide-react";
 
+// Add WhatsApp number constant (same as in Cart.tsx)
+const WHATSAPP_NUMBER = "918985909600";
+
 const Index = () => {
   // Use all products for both sections
   const newArrivals = products;
   const allProducts = products.slice(0, 8); // Show first 8 products in All Products section
+
+  const handleCustomOrderClick = () => {
+    const message = encodeURIComponent(
+      "Hi, I'm interested in placing a custom order with Boozers Club.\n\n" +
+      "I would like to discuss:\n" +
+      "□ Custom Design\n" +
+      "□ Bulk Order\n" +
+      "□ Corporate Order\n\n" +
+      "Please help me with more information about custom orders."
+    );
+    
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -83,12 +99,12 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">Custom Orders</h2>
-              <Link
-                to="/contact"
+              <button
+                onClick={handleCustomOrderClick}
                 className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm uppercase tracking-wider font-medium"
               >
                 Get Started <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
+              </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -130,8 +146,12 @@ const Index = () => {
             </div>
 
             <div className="text-center mt-12">
-              <Button asChild size="lg" className="bg-brand-teal hover:bg-brand-teal/90">
-                <Link to="/contact">Start Your Custom Order</Link>
+              <Button
+                onClick={handleCustomOrderClick}
+                size="lg"
+                className="bg-brand-teal hover:bg-brand-teal/90"
+              >
+                Start Your Custom Order
               </Button>
             </div>
           </div>
