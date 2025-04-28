@@ -86,7 +86,7 @@ export const products: Product[] = [
     name: "Eat Sleep Game Repeat Printed Tshirt",
     price: 349,
     image: "/images/e-s-g-r1.jpg",
-    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic sweatshirt.",
+    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic Tshirt.",
     colors: ["#880000"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/opr2.jpg"]
@@ -116,7 +116,7 @@ export const products: Product[] = [
     name: "Eat Sleep Game Repeat Printed Tee",
     price: 349,
     image: "/images/e-s-g-r-w1.jpg",
-    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic sweatshirt.",
+    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic Tshirt.",
     colors: ["#FFFAF0"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/arisew2.jpg"]
