@@ -5,67 +5,78 @@ import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
-import { ArrowRight, Palette } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const Index = () => {
+  // Use all products for both sections
   const newArrivals = products;
-  const allProducts = products.slice(0, 8);
+  const allProducts = products.slice(0, 8); // Show first 8 products in All Products section
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      {/* New Arrivals and Custom Order Section */}
-      <div className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* New Arrivals */}
-            <section>
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">New Arrivals</h2>
-                <Link
-                  to="/products?category=new"
-                  className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm uppercase tracking-wider font-medium"
-                >
-                  View All <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </div>
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative py-16 md:py-24 overflow-hidden">
+          {/* Background Pattern Image */}
+          <div className="absolute inset-0 z-0 opacity-10">
+            <img
+              src="/images/heroback.jpeg"
+              alt="Fashion pattern background"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {newArrivals.slice(0, 4).map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            </section>
-
-            {/* Custom Order */}
-            <section>
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">Custom Order</h2>
-                <Link
-                  to="/contact"
-                  className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm uppercase tracking-wider font-medium"
-                >
-                  Contact Us <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </div>
-
-              <div className="bg-secondary/30 rounded-lg p-8 h-full flex flex-col justify-center items-center text-center">
-                <div className="bg-brand-teal/20 rounded-full p-4 mb-6">
-                  <Palette className="h-8 w-8 text-brand-teal" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">Design Your Own</h3>
-                <p className="text-muted-foreground mb-6">
-                  Want something unique? Work with our designers to create your custom apparel. Perfect for teams, events, or personal style.
-                </p>
-                <Button asChild className="bg-brand-teal hover:bg-brand-teal/90">
-                  <Link to="/contact">Start Custom Order</Link>
+          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
+            <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
+              <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 uppercase tracking-wider">
+                | STYLE | DISCOVER | DEFINE |
+              </h1>
+              <p className="text-lg mb-6 md:mb-8 text-muted-foreground tracking-wide">
+                Revolution in Fashion is Coming
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button asChild size="lg" className="bg-brand-teal hover:bg-brand-teal/90 shadow-lg shadow-brand-teal/50 uppercase tracking-wider font-medium">
+                  <Link to="/products">Shop Collection</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="uppercase tracking-wider font-medium">
+                  <Link to="/about">Our Story</Link>
                 </Button>
               </div>
-            </section>
+            </div>
+            <div className="md:w-1/2 relative">
+              <div className="relative rounded-lg overflow-hidden aspect-[4/3] md:aspect-square bg-white/80 shadow-xl">
+                <img
+                  src="/images/heroabt.jpeg"
+                  alt="Fashion model wearing printed t-shirt"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+
+        {/* New Arrivals Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">New Arrivals</h2>
+              <Link
+                to="/products?category=new"
+                className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm uppercase tracking-wider font-medium"
+              >
+                View All <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {newArrivals.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Feature Banner */}
         <section className="bg-brand-navy text-white py-16">
