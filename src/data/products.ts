@@ -12,6 +12,16 @@ export const products: Product[] = [
     additionalImages: ["/images/arise2.jpg", "/images/arise3.jpg"]
   },
   {
+    id: "johnywalker red",
+    name: "Johnnie Walker Logo T-Shirt",
+    price: 349,
+    image: "/images/jw-r1.jpg",
+    description: "howcase your appreciation for the iconic Johnnie Walker brand with this classic logo t-shirt. Featuring the recognizable Striding Man emblem and the Johnnie Walker name, this comfortable tee is a subtle nod to a world-renowned spirit.",
+    colors: ["#880000"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/jw-r2.jpg"]
+  },
+  {
     id: "onepiece black",
     name: "One Piece Black Graphic Red T-Shirt",
     price: 349,
@@ -22,6 +32,46 @@ export const products: Product[] = [
     additionalImages: ["/images/opr2.jpg"]
   },
   {
+    id: "boozersclub grey",
+    name: "Boozersclub Printed Tee", 
+    price: 349,
+    image: "/images/bzg1.jpg",
+    description: "Show off your fun side with this grey t-shirt displaying the unique Boozers Club design. Comfortable and eye-catching.",
+    colors: ["#888888"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/bzg2.jpg"]
+  },
+  {
+    id: "Beast-mode-blue",
+    name: "Beast Mode Navy Blue Printed Tshirt",
+    price: 349,
+    image: "/images/beastmode-b1.jpg",
+    description: "Step back in time with our Retro Vibes tee. This nostalgic design captures the essence of vintage style with a modern twist. The perfect addition to any casual wardrobe, offering both comfort and character.",
+    colors: ["#000080"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/beastmode-b2.jpg"]
+  },
+  {
+    id: "malibu white",
+    name: "Malibu Beach Vibes T-Shirt",
+    price: 349,
+    image: "/images/malibu-w1.jpg",
+    description: "Embrace the laid-back vibes with this Malibu graphic t-shirt. Featuring a retro-inspired design with palm trees and a sunset, this tee evokes the sunny and carefree spirit of Malibu.",
+    colors: ["#FFFAF0"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/arisew2.jpg"]
+  },
+  {
+    id: "gdna black",
+    name: "Printed GDNA Tee",
+    price: 349,
+    image: "/images/g-d-n-a-b1.jpg",
+    description: " Gear up with this eye-catching red t-shirt featuring the classic One Piece Jolly Roger logo. Made for comfort and perfect for expressing your fandom.",
+    colors: ["#000000"],
+    sizes: ["s", "m", "l"],
+    additionalImages: ["/images/g-d-n-a-b2.jpg"]
+  },
+  {
     id: "boozersclub white graphic tshirt",
     name: "Boozers club Graphic White T-Shirt",
     price: 349,
@@ -30,6 +80,16 @@ export const products: Product[] = [
     colors: ["#FFFAF0"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/bzw2.jpg"]
+  },
+  {
+    id: "eat sleep game repeat red",
+    name: "Eat Sleep Game Repeat Printed Tshirt",
+    price: 349,
+    image: "/images/e-s-g-r1.jpg",
+    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic sweatshirt.",
+    colors: ["#880000"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/opr2.jpg"]
   },
   {
     id: "Arise-white",
@@ -50,6 +110,26 @@ export const products: Product[] = [
     colors: ["#000000"],
     sizes: ["s", "m", "l"],
     additionalImages: ["/images/bzb2.jpg"]
+  },
+  {
+    id: "eat sleep game repeat",
+    name: "Eat Sleep Game Repeat Printed Tee",
+    price: 349,
+    image: "/images/e-s-g-w1.jpg",
+    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic sweatshirt.",
+    colors: ["#FFFAF0"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/arisew2.jpg"]
+  },
+  {
+    id: "beast mode green",
+    name: "Beast Mode Printed Green Tshirt",
+    price: 349,
+    image: "/images/beastmode-g1.jpg",
+    description: "Embrace a fresh start every day with The Everbloom Tee. Crafted for exceptional comfort and lasting wear, this t-shirt features a subtle yet inspiring Arise graphic. It's a gentle reminder of continuous growth and the beauty of new beginnings. Perfect for adding a touch of positive energy to your everyday style.",
+    colors: ["#00563f"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/beastmode-g2.jpg"]
   },
   {
     id: "onepiece White",
@@ -82,6 +162,16 @@ export const products: Product[] = [
     additionalImages: ["/images/bzblue2.jpg"]
   },
   {
+    id: "johnywalker white",
+    name: "Johnnie Walker Whisky Graphic Tee", 
+    price: 349,
+    image: "/images/jw-g1.jpg",
+    description: "howcase your appreciation for the iconic Johnnie Walker brand with this classic logo t-shirt. Featuring the recognizable Striding Man emblem and the Johnnie Walker name, this comfortable tee is a subtle nod to a world-renowned spirit.",
+    colors: ["#888888"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/jw-g2.jpg"]
+  },
+  {
     id: "Bombay Supphair Red",
     name: "The Connoisseur's Choice: Bombay Sapphire Graphic Red T-Shirt",
     price: 349,
@@ -90,6 +180,16 @@ export const products: Product[] = [
     colors: ["#880000"],
     sizes: ["s", "m", "l"],
     additionalImages: ["/images/bsr2.jpg", "/images/bsr3.jpg"]
+  },
+  {
+    id: "wanted blue",
+    name: "Monkey D. Luffy Wanted T-Shirt",
+    price: 349,
+    image: "/images/wanted-b1.jpg",
+    description: "Show your love for the iconic anime series with this Monkey D. Luffy Wanted poster t-shirt. ",
+    colors: ["#000080"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/wanted-b2.jpg"]
   },
   {
     id: "BANKAI WARRIOR WHITE",
