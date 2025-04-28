@@ -2,16 +2,6 @@ import { Product } from "@/context/CartContext";
 
 export const products: Product[] = [
   {
-    id: "Arise-mgrey",
-    name: "Arise Soft Printed T-shirt Milange-Grey", 
-    price: 349,
-    image: "/images/arise1.jpg",
-    description: " Embrace a fresh start every day with The Everbloom Tee. Crafted for exceptional comfort and lasting wear, this t-shirt features a subtle yet inspiring Arise graphic. It's a gentle reminder of continuous growth and the beauty of new beginnings. Perfect for adding a touch of positive energy to your everyday style.",
-    colors: ["#888888"],
-    sizes: ["s", "m", "l", "xl" ],
-    additionalImages: ["/images/arise2.jpg", "/images/arise3.jpg"]
-  },
-  {
     id: "johnywalker red",
     name: "Johnnie Walker Logo T-Shirt",
     price: 349,
@@ -20,6 +10,16 @@ export const products: Product[] = [
     colors: ["#880000"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/jw-r2.jpg"]
+  },
+  {
+    id: "Arise-mgrey",
+    name: "Arise Soft Printed T-shirt Milange-Grey", 
+    price: 349,
+    image: "/images/arise1.jpg",
+    description: " Embrace a fresh start every day with The Everbloom Tee. Crafted for exceptional comfort and lasting wear, this t-shirt features a subtle yet inspiring Arise graphic. It's a gentle reminder of continuous growth and the beauty of new beginnings. Perfect for adding a touch of positive energy to your everyday style.",
+    colors: ["#888888"],
+    sizes: ["s", "m", "l", "xl" ],
+    additionalImages: ["/images/arise2.jpg", "/images/arise3.jpg"]
   },
   {
     id: "onepiece black",
@@ -115,7 +115,7 @@ export const products: Product[] = [
     id: "eat sleep game repeat",
     name: "Eat Sleep Game Repeat Printed Tee",
     price: 349,
-    image: "/images/e-s-g-w1.jpg",
+    image: "/images/e-s-g-r-w1.jpg",
     description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic sweatshirt.",
     colors: ["#FFFAF0"],
     sizes: ["s", "m", "l", "xl"],
@@ -141,16 +141,7 @@ export const products: Product[] = [
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/opw2.jpg"]
   },
-  {
-    id: "Bombay Supphair white",
-    name: "The Connoisseur's Choice: Bombay Sapphire Graphic White T-Shirt",
-    price: 349,
-    image: "/images/bs1.jpg",
-    description: " For those who appreciate the finer things, this light grey t-shirt subtly showcases your affinity for the iconic Bombay Sapphire brand. Crafted for comfort and designed with a touch of sophistication.",
-    colors: ["#FFFAF0"],
-    sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/bs2.jpg"]
-  },
+  
   {
     id: "boozersclub navy blue graphic tshirt",
     name: "Boozers club Graphic Navy-Blue T-Shirt",
@@ -162,11 +153,21 @@ export const products: Product[] = [
     additionalImages: ["/images/bzblue2.jpg"]
   },
   {
+    id: "Bombay Supphair white",
+    name: "The Connoisseur's Choice: Bombay Sapphire Graphic White T-Shirt",
+    price: 349,
+    image: "/images/bs1.jpg",
+    description: " For those who appreciate the finer things, this light grey t-shirt subtly showcases your affinity for the iconic Bombay Sapphire brand. Crafted for comfort and designed with a touch of sophistication.",
+    colors: ["#FFFAF0"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/bs2.jpg"]
+  },
+  {
     id: "johnywalker white",
     name: "Johnnie Walker Whisky Graphic Tee", 
     price: 349,
     image: "/images/jw-g1.jpg",
-    description: "howcase your appreciation for the iconic Johnnie Walker brand with this classic logo t-shirt. Featuring the recognizable Striding Man emblem and the Johnnie Walker name, this comfortable tee is a subtle nod to a world-renowned spirit.",
+    description: "Showcase your appreciation for the iconic Johnnie Walker brand with this classic logo t-shirt. Featuring the recognizable Striding Man emblem and the Johnnie Walker name, this comfortable tee is a subtle nod to a world-renowned spirit.",
     colors: ["#888888"],
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/jw-g2.jpg"]
