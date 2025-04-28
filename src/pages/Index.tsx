@@ -95,7 +95,7 @@ const Index = () => {
         </section>
 
         {/* Custom Order Section */}
-        <section className="py-16 bg-secondary/10">
+        <section id="custom-order" className="py-16 bg-secondary/10">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">Custom Orders</h2>
