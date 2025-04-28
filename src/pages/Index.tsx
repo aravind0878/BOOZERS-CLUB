@@ -120,49 +120,6 @@ const Index = () => {
             </div>
           </div>
         </section>
-
-        {/* All Products Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">All Products</h2>
-              <Link
-                to="/products"
-                className="text-brand-teal flex items-center hover:underline hover:text-brand-teal/80 transition-all duration-300 hover:shadow-brand-teal/30 hover:shadow-sm uppercase tracking-wider font-medium"
-              >
-                View All <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {allProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Call to Action */}
-        <section className="bg-brand-teal text-white py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-wider mb-4">
-              Join Our Community
-            </h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto text-muted-foreground tracking-wide">
-              Subscribe to our newsletter for exclusive offers, new releases, and style inspiration delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-2">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="px-4 py-2 rounded-md flex-grow text-black bg-white/90 font-medium"
-              />
-              <Button className="bg-brand-teal hover:bg-brand-teal/90 shadow-lg shadow-brand-teal/50 uppercase tracking-wider font-medium">
-                Subscribe
-              </Button>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />
