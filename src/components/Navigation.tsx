@@ -14,6 +14,18 @@ const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  const handleCustomOrderClick = (e: React.MouseEvent) => {
+    if (location.pathname !== '/') {
+      return; // Let the Link component handle navigation
+    }
+    
+    e.preventDefault();
+    const element = document.getElementById('custom-order');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Add effect to scroll to top on route change
   useEffect(() => {
     window.scrollTo({
@@ -23,127 +35,88 @@ const Navigation = () => {
   }, [location.pathname, location.search]);
 
   return (
-    <header className="py-4 border-b sticky top-0 z-50 bg-white">
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="font-bold text-2xl">
-          <span className="uppercase tracking-wider">Boozers</span>
-          <span className="text-brand-teal uppercase tracking-wider">Club</span>
-        </Link>
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto px-4">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex items-center">
+            <Link to="/" className="mr-8">
+              <span className="text-xl font-bold">
+                BOOZERS<span className="text-brand-teal">CLUB</span>
+              </span>
+            </Link>
+          </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
-            Home
-          </Link>
-          <Link to="/products" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
-            Shop All
-          </Link>
-          <Link to="/products?category=new" className="text-sm font-medium hover:text-brand-teal transition-all duration-300 uppercase tracking-wider">
-            New Arrivals
-          </Link>
-        </nav>
+          {/* Center Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="text-sm hover:text-brand-teal transition-all duration-300">
+              HOME
+            </Link>
+            <Link to="/products" className="text-sm hover:text-brand-teal transition-all duration-300">
+              SHOP ALL
+            </Link>
+            <Link to="/products?category=new" className="text-sm hover:text-brand-teal transition-all duration-300">
+              NEW ARRIVALS
+            </Link>
+            <Link 
+              to="/#custom-order" 
+              onClick={handleCustomOrderClick}
+              className="text-sm hover:text-brand-teal transition-all duration-300"
+            >
+              CUSTOM ORDER
+            </Link>
+          </nav>
 
-        {/* User Actions */}
-        <div className="flex items-center space-x-4">
-          <Link
-            to="/profile"
-            className="p-2 rounded-full hover:bg-secondary transition"
-            title="My Profile"
-          >
-            <User className="h-5 w-5" />
-          </Link>
-
-          {/* Cart Icon with Item Count */}
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative">
-                <ShoppingCart className="h-5 w-5" />
-                {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-brand-coral text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    {totalItems}
-                  </span>
-                )}
-              </Button>
-            </SheetTrigger>
-            <SheetContent>
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between py-4 border-b">
-                  <h2 className="font-medium text-lg">Your Cart ({totalItems})</h2>
-                </div>
-
-                {totalItems === 0 ? (
-                  <div className="flex-1 flex items-center justify-center flex-col">
-                    <ShoppingCart className="h-12 w-12 text-muted-foreground mb-4" />
-                    <p className="text-muted-foreground">Your cart is empty</p>
-                    <Button asChild className="mt-4 bg-brand-teal hover:bg-brand-teal/90">
-                      <Link to="/products">Shop Now</Link>
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="flex-1 overflow-auto py-4">
-                    {/* Cart items would be rendered here */}
-                  </div>
-                )}
-
-                {totalItems > 0 && (
-                  <div className="border-t py-4">
-                    <Button asChild className="w-full bg-brand-teal hover:bg-brand-teal/90">
-                      <Link to="/cart">View Cart</Link>
-                    </Button>
-                  </div>
-                )}
-              </div>
-            </SheetContent>
-          </Sheet>
+          {/* Right Icons */}
+          <div className="flex items-center space-x-4">
+            <Link to="/profile">
+              <User className="h-5 w-5" />
+            </Link>
+            <Link to="/cart" className="relative">
+              <ShoppingCart className="h-5 w-5" />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-brand-teal text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+          </div>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
+          <button
             className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => setMobileMenuOpen(true)}
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+            <Menu className="h-6 w-6" />
+          </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden p-4 border-t bg-white">
+      <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+        <SheetContent side="left">
           <nav className="flex flex-col space-y-4">
-            <Link
-              to="/"
-              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Home
+            <Link to="/" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
+              HOME
             </Link>
-            <Link
-              to="/products"
-              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Shop All
+            <Link to="/products" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
+              SHOP ALL
             </Link>
-            <Link
-              to="/products?category=new"
-              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              New Arrivals
+            <Link to="/products?category=new" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
+              NEW ARRIVALS
             </Link>
-            <Link
-              to="/contact"
-              className="text-sm font-medium py-2 hover:text-brand-teal transition-all duration-300 uppercase tracking-wider"
-              onClick={() => setMobileMenuOpen(false)}
+            <Link 
+              to="/#custom-order" 
+              onClick={(e) => {
+                handleCustomOrderClick(e);
+                setMobileMenuOpen(false);
+              }}
+              className="text-sm"
             >
-              Contact
+              CUSTOM ORDER
             </Link>
           </nav>
-        </div>
-      )}
+        </SheetContent>
+      </Sheet>
     </header>
   );
 };
