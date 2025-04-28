@@ -108,15 +108,14 @@ const Index = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg p-8 text-center shadow-sm">
-                <div className="bg-brand-teal/20 rounded-full p-4 mb-6 mx-auto w-16 h-16 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-medium mb-4">Design Your Own</h3>
-                <p className="text-muted-foreground">
-                  Create your unique design with our expert team. Perfect for expressing your individual style.
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold mb-2">Design Your Own</h3>
+                <p className="text-muted-foreground mb-2">
+                  Create your unique design with our easy-to-use design tool.
+                  Premium materials and expert printing ensure your custom designs look perfect every time.
+                </p>
+                <p className="text-brand-teal font-medium">
+                  Custom orders starting at just ₹399
                 </p>
               </div>
 
