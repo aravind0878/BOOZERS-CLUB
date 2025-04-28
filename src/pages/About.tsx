@@ -34,7 +34,7 @@ const About = () => {
                 </p>
                 
                 <p className="mb-4">
-                  Our "Guns Don't Need Agreement" philosophy encapsulates our belief in bold self-expression and unapologetic individuality. We believe that true style comes from confidence and authenticity, not following trends.
+                  Our "Guns Don't Need Agreements" philosophy encapsulates our belief in bold self-expression and unapologetic individuality. We believe that true style comes from confidence and authenticity, not following trends.
                 </p>
                 
                 <p className="mb-4">
