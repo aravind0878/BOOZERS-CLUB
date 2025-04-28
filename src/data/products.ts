@@ -18,7 +18,7 @@ export const products: Product[] = [
     image: "/images/opr1.jpg",
     description: " Gear up with this eye-catching red t-shirt featuring the classic One Piece Jolly Roger logo. Made for comfort and perfect for expressing your fandom.",
     colors: ["#880000"],
-    sizes: ["s", "m", "l", "xl"],
+    sizes: ["s", "m", "l"],
     additionalImages: ["/images/opr2.jpg"]
   },
   {
@@ -48,7 +48,7 @@ export const products: Product[] = [
     image:"/images/bzb1.jpg",
     description: "Show off your fun side with this white t-shirt displaying the unique Boozers Club design. Comfortable and eye-catching.",
     colors: ["#000000"],
-    sizes: ["s", "m", "l", "xl"],
+    sizes: ["s", "m", "l"],
     additionalImages: ["/images/bzb2.jpg"]
   },
   {
@@ -88,8 +88,18 @@ export const products: Product[] = [
     image: "/images/bsr1.jpg",
     description: "Make a statement with our Urban Street tee. Features bold street art-inspired graphics and premium quality cotton fabric. Perfect for those who want to stand out with an edgy urban style.",
     colors: ["#880000"],
-    sizes: ["s", "m", "l", "xl"],
+    sizes: ["s", "m", "l"],
     additionalImages: ["/images/bsr2.jpg", "/images/bsr3.jpg"]
+  },
+  {
+    id: "BANKAI WARRIOR WHITE",
+    name: "BANKAI Warrior White T-Shirt (Anime-Inspired)",
+    price: 349,
+    image: "/images/bsr1.jpg",
+    description: "Make a statement with our Urban Street tee. Features bold street art-inspired graphics and premium quality cotton fabric. Perfect for those who want to stand out with an edgy urban style.",
+    colors: ["#FFFAF0"],
+    sizes: ["s", "m", "l","XL"],
+    additionalImages: ["/images/bw-w1.jpg", "/images/bw-w2.jpg"]
   }
 ];
 
