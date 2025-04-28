@@ -96,7 +96,8 @@ export const products: Product[] = [
     name: "BANKAI Warrior White T-Shirt (Anime-Inspired)",
     price: 349,
     image: "/images/bw-w1.jpg",
-    description: "Make a statement with our Urban Street tee. Features bold street art-inspired graphics and premium quality cotton fabric. Perfect for those who want to stand out with an edgy urban style.",
+    description: "Unleash your inner warrior with the BANKAI Warrior white T-Shirt, inspired by legendary anime battles!
+Made from premium, breathable cotton, it offers unbeatable comfort with a stylish regular fit — perfect for anime fans, streetwear lovers, and anyone who lives life at full power.",
     colors: ["#FFFAF0"],
     sizes: ["s", "m", "l","XL"],
     additionalImages: ["/images/bw-w2.jpg"]
