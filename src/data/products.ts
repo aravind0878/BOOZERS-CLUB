@@ -113,6 +113,16 @@ export const products: Product[] = [
   },
   //white
   {
+    id: "eat sleep game repeat white",
+    name: "Eat Sleep Game Repeat Printed Tshirt",
+    price: 349,
+    image: "/images/esgrw.jpg",
+    description: " Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic Tshirt.",
+    colors: ["#FFFAF0"],
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/arisew2.jpg"]
+  },
+  {
     id: "beast mode green",
     name: "Beast Mode Printed Green Tshirt",
     price: 349,
@@ -164,7 +174,16 @@ export const products: Product[] = [
     additionalImages: ["/images/jw-g2.jpg"]
   },
   //red
-  
+  {
+    id: "eat sleep game repeat red",
+    name: "Eat Sleep Game Repeat Printed Tshirt",
+    price: 349,
+    image: "/images/esgrred.jpg",
+    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic Tshirt.",
+    colors: ["#880000"],
+    sizes: ["s", "m", "l"],
+    additionalImages: ["/images/opr2.jpg"]
+  },
   {
     id: "wanted blue",
     name: "Monkey D. Luffy Wanted T-Shirt",
