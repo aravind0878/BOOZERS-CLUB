@@ -8,7 +8,7 @@ export const products: Product[] = [
     image: "/images/jw-r1.jpg",
     description: "howcase your appreciation for the iconic Johnnie Walker brand with this classic logo t-shirt. Featuring the recognizable Striding Man emblem and the Johnnie Walker name, this comfortable tee is a subtle nod to a world-renowned spirit.",
     colors: ["#880000"],
-    sizes: ["s", "m", "l", "xl"],
+    sizes: ["s", "m", "l"],
     additionalImages: ["/images/jw-r2.jpg"]
   },
   {
@@ -85,7 +85,7 @@ export const products: Product[] = [
     id: "eat sleep game repeat red",
     name: "Eat Sleep Game Repeat Printed Tshirt",
     price: 349,
-    image: "/images/esgrred.jpg",  // Updated to use the correct image path
+    image: "/images/esgr-r1.jpg",  // Updated to use the correct image path
     description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic Tshirt.",
     colors: ["#880000"],
     sizes: ["s", "m", "l", "xl"],
