@@ -8,7 +8,7 @@ export const products: Product[] = [
     image: "/images/jw-r1.jpg",
     description: "howcase your appreciation for the iconic Johnnie Walker brand with this classic logo t-shirt. Featuring the recognizable Striding Man emblem and the Johnnie Walker name, this comfortable tee is a subtle nod to a world-renowned spirit.",
     colors: ["#880000"],
-    sizes: ["s", "m", "l"],
+    sizes: ["s", "m", "L"],
     additionalImages: ["/images/jw-r2.jpg"]
   },
   {
@@ -23,7 +23,7 @@ export const products: Product[] = [
   },
   {
     id: "onepiece black",
-    name: "One Piece Black Graphic Red T-Shirt",
+    name: "One Piece  Graphic Red T-Shirt",
     price: 349,
     image: "/images/opr1.jpg",
     description: " Gear up with this eye-catching red t-shirt featuring the classic One Piece Jolly Roger logo. Made for comfort and perfect for expressing your fandom.",
@@ -82,14 +82,14 @@ export const products: Product[] = [
     additionalImages: ["/images/bzw2.jpg"]
   },
   {
-    id: "eat sleep game repeat red",
-    name: "Eat Sleep Game Repeat Printed Tshirt",
+    id: "Bombay Supphair Red",
+    name: "The Connoisseur's Choice: Bombay Sapphire Graphic Red T-Shirt",
     price: 349,
-    image: "/images/esgr-r1.jpg",  // Updated to use the correct image path
-    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic Tshirt.",
+    image: "/images/bsr1.jpg",
+    description: "Make a statement with our Urban Street tee. Features bold street art-inspired graphics and premium quality cotton fabric. Perfect for those who want to stand out with an edgy urban style.",
     colors: ["#880000"],
-    sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/opr2.jpg"]
+    sizes: ["s", "m", "l"],
+    additionalImages: ["/images/bsr2.jpg", "/images/bsr3.jpg"]
   },
   {
     id: "Arise-white",
@@ -173,15 +173,16 @@ export const products: Product[] = [
     additionalImages: ["/images/jw-g2.jpg"]
   },
   {
-    id: "Bombay Supphair Red",
-    name: "The Connoisseur's Choice: Bombay Sapphire Graphic Red T-Shirt",
+    id: "eat sleep game repeat red",
+    name: "Eat Sleep Game Repeat Printed Tshirt",
     price: 349,
-    image: "/images/bsr1.jpg",
-    description: "Make a statement with our Urban Street tee. Features bold street art-inspired graphics and premium quality cotton fabric. Perfect for those who want to stand out with an edgy urban style.",
+    image: "/images/esgr-r1.jpg",  // Updated to use the correct image path
+    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic Tshirt.",
     colors: ["#880000"],
-    sizes: ["s", "m", "l"],
-    additionalImages: ["/images/bsr2.jpg", "/images/bsr3.jpg"]
+    sizes: ["s", "m", "l", "xl"],
+    additionalImages: ["/images/opr2.jpg"]
   },
+  
   {
     id: "wanted blue",
     name: "Monkey D. Luffy Wanted T-Shirt",
