@@ -111,16 +111,7 @@ export const products: Product[] = [
     sizes: ["s", "m", "l"],
     additionalImages: ["/images/bzb2.jpg"]
   },
-  {
-    id: "eat sleep game repeat",
-    name: "Eat Sleep Game Repeat Printed Tee",
-    price: 349,
-    image: "/images/esgrw1.jpg",
-    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic Tshirt.",
-    colors: ["#FFFAF0"],
-    sizes: ["s", "m", "l", "xl"],
-    additionalImages: ["/images/arisew2.jpg"]
-  },
+  //white
   {
     id: "beast mode green",
     name: "Beast Mode Printed Green Tshirt",
@@ -172,16 +163,7 @@ export const products: Product[] = [
     sizes: ["s", "m", "l", "xl"],
     additionalImages: ["/images/jw-g2.jpg"]
   },
-  {
-    id: "eat sleep game repeat red",
-    name: "Eat Sleep Game Repeat Printed Tshirt",
-    price: 349,
-    image: "/images/esgr-r1.jpg",  // Updated to use the correct image path
-    description: "Stay comfortable and stylish while showcasing your passion with this Eat Sleep Game Repeat graphic Tshirt.",
-    colors: ["#880000"],
-    sizes: ["s", "m", "l"],
-    additionalImages: ["/images/opr2.jpg"]
-  },
+  //red
   
   {
     id: "wanted blue",
