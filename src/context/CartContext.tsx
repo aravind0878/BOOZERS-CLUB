@@ -1,15 +1,15 @@
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from 'react';
 
-export type Product = {
+export interface Product {
   id: string;
   name: string;
   price: number;
   image: string;
-  description: string;
+  description?: string;
   sizes: string[];
   additionalImages?: string[];
-};
+}
 
 export type CartItem = {
   product: Product;
@@ -34,14 +34,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [totalItems, setTotalItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
       setItems(JSON.parse(savedCart));
     }
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items));
     setTotalItems(items.reduce((sum, item) => sum + item.quantity, 0));
     setTotalPrice(items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0));
@@ -50,9 +50,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const addToCart = (product: Product, quantity: number, size: string) => {
     setItems(prevItems => {
       const existingItemIndex = prevItems.findIndex(
-        item =>
-          item.product.id === product.id &&
-          item.size === size
+        item => item.product.id === product.id && item.size === size
       );
 
       if (existingItemIndex > -1) {
